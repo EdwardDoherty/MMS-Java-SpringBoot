@@ -1,0 +1,135 @@
+:root {
+  --medGreen: #04e892;
+  --medDarkGreen: #02a266;
+  --medLightGreen: #a0f4d7;
+  --black: #00150d;
+  --darkGreen: #002E1D;
+  --whiteGreen:#e4e6eb;
+  --darkMode: #242427;
+  --white: #ffffff;
+}
+
+html {
+  font-size: 14px;
+  font-family: sans-serif;
+  position: relative;
+  min-height: 100%;
+  box-sizing: border-box;
+  background-color: var(--darkMode);
+  color: var(--whiteGreen);
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+hr {
+  margin: 1rem 0;
+  color: var(--medGreen);
+  background-color: currentColor;
+  border: 0;
+  opacity: 0.25;
+  height: 1px;
+}
+
+form {
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+input[type=text] {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  border: 2px solid var(--medDarkGreen);
+  border-radius: 2rem;
+  padding: 0.5rem;
+}
+
+button[type=button] {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  background-color: var(--medGreen);
+  padding: 0.75rem;
+  border-radius: 2rem;
+  border: none;
+  box-shadow: 0px 1px 0px var(--black);
+  user-select: none;
+}
+button[type=button]:active {
+  box-shadow: 0px -1px 0px var(--medLightGreen);
+  color: var(--medLightGreen);
+}
+
+.darkMode {
+  background-color: var(--darkMode) !important;
+  color: var(--whiteGreen) !important;
+}
+
+#darkModeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: -1px 1px 0px var(--medDarkGreen);
+  height: 2rem;
+  width: 2rem;
+  background-color: var(--black);
+  border: 1px solid var(--medDarkGreen);
+  color: var(--whiteGreen);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.darkModeBtnActive {
+  background-color: var(--whiteGreen) !important;
+  border: 1px solid var(--black) !important;
+  box-shadow: -1px 1px 0px var(--black) !important;
+  color: var(--black) !important;
+}
+
+/*# sourceMappingURL=main.css.map */
