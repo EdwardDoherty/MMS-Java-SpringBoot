@@ -1,0 +1,10 @@
+
+
+<section th:fragment="expenseList (expenseArray)">
+    <!--/*@thymesVar id="expenseDB" type="ArrayList<Expense>"*/-->
+    <hr>
+    <div th:each="expense: ${expenseArray}">
+        <div th:replace="fragments/expenseInfo.html :: expense (expenseObject = ${expense})"></div>
+        <hr>
+    </div>
+</section>
