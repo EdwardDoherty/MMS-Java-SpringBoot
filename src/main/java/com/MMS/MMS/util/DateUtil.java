@@ -1,14 +1,14 @@
-package com.MMS.MMS.model;
+package com.MMS.MMS.util;
 
-public class Date {
+public class DateUtil {
 
     // Static Variables
 
     // Instance Variables
-    int dateDay;
+    private int dateDay;
 
     // Constructors
-    public Date(int dateDay){
+    public DateUtil(int dateDay){
         this.dateDay = dateDay;
     }
 
