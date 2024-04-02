@@ -3,18 +3,19 @@ package com.MMS.MMS.model;
 import com.MMS.MMS.enums.ExpenseType;
 import com.MMS.MMS.enums.LiabilityType;
 import com.MMS.MMS.enums.PaymentStatus;
+import com.MMS.MMS.util.DateUtil;
 
 import java.math.BigDecimal;
 
 public class InstallmentLoan extends Liability {
 
     // Getters
-    public Date getEndDate(){
+    public DateUtil getEndDate(){
         return endDate;
     };
 
     // Setter
-    public void setEndDate(Date endDate){
+    public void setEndDate(DateUtil endDate){
         this.endDate = endDate;
     };
 
@@ -23,8 +24,8 @@ public class InstallmentLoan extends Liability {
             String name,
             BigDecimal charge,
             int chargeFrequency,
-            Date dueDate,
-            Date startDate,
+            DateUtil dueDate,
+            DateUtil startDate,
             ExpenseType expenseType,
             PaymentStatus paymentStatus,
             BigDecimal lateFee,
@@ -33,7 +34,7 @@ public class InstallmentLoan extends Liability {
             BigDecimal totalBalance,
             LiabilityType liabilityType,
             BigDecimal interestRate,
-            Date endDate
+            DateUtil endDate
     ){
         super(  name,
                 charge,
@@ -53,7 +54,7 @@ public class InstallmentLoan extends Liability {
     }
 
     // Private Variables
-    private Date endDate;
+    private DateUtil endDate;
 
 
 }

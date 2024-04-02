@@ -3,6 +3,7 @@ package com.MMS.MMS.model;
 import com.MMS.MMS.enums.ExpenseType;
 import com.MMS.MMS.enums.LiabilityType;
 import com.MMS.MMS.enums.PaymentStatus;
+import com.MMS.MMS.util.DateUtil;
 
 import java.math.BigDecimal;
 
@@ -35,8 +36,8 @@ public class Liability extends Expense implements Liabilities {
             String name,
             BigDecimal charge,
             int chargeFrequency,
-            Date dueDate,
-            Date startDate,
+            DateUtil dueDate,
+            DateUtil startDate,
             ExpenseType expenseType,
             PaymentStatus paymentStatus,
             BigDecimal lateFee,

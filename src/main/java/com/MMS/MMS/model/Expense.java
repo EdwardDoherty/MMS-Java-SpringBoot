@@ -2,6 +2,7 @@ package com.MMS.MMS.model;
 
 import com.MMS.MMS.enums.ExpenseType;
 import com.MMS.MMS.enums.PaymentStatus;
+import com.MMS.MMS.util.DateUtil;
 
 import java.math.BigDecimal;
 
@@ -18,11 +19,11 @@ public class Expense implements Expenses {
     public int getChargeFrequency(){
         return chargeFrequency;
     };
-    public Date getDueDate(){
-        return dueDate;
+    public int getDueDate(){
+        return dueDate.getDateDay();
     };
-    public Date getStartDate(){
-        return startDate;
+    public int getStartDate(){
+        return startDate.getDateDay();
     };
     public ExpenseType getExpenseType(){
         return expenseType;
@@ -50,10 +51,10 @@ public class Expense implements Expenses {
     public void setChargeFrequency(int chargeFreq){
         this.chargeFrequency = chargeFreq;
     };
-    public void setDueDate(Date dueDate){
+    public void setDueDate(DateUtil dueDate){
         this.dueDate = dueDate;
     };
-    public void setStartDate(Date startDate){
+    public void setStartDate(DateUtil startDate){
         this.startDate = startDate;
     };
     public void setExpenseType(ExpenseType expenseType){
@@ -77,8 +78,8 @@ public class Expense implements Expenses {
             String name,
             BigDecimal charge,
             int chargeFrequency,
-            Date dueDate,
-            Date startDate,
+            DateUtil dueDate,
+            DateUtil startDate,
             ExpenseType expenseType,
             PaymentStatus paymentStatus,
             BigDecimal lateFee,
@@ -103,8 +104,8 @@ public class Expense implements Expenses {
     private String name;
     private BigDecimal charge;
     private int chargeFrequency;
-    private Date dueDate;
-    private Date startDate;
+    private DateUtil dueDate;
+    private DateUtil startDate;
     private ExpenseType expenseType;
     private PaymentStatus paymentStatus;
     private BigDecimal lateFee;
