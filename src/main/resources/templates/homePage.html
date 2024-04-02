@@ -1,17 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Home</title>
-    <link th:href="@{/css/main.css}" rel="stylesheet" />
-</head>
-<body>
-    <h1>Welcome Home</h1>
-    <p th:text="'Test Expense: ' + ${testExpense.getName()} + ' | Expense Type: ' + ${testExpense.getExpenseType()}"></p>
-    <p th:text="'Test Liability: ' + ${testLiability.getName()} + ' | Expense Type: ' + ${testLiability.getExpenseType()}"></p>
-    <p th:text="'Test Installment: ' + ${testInstallment.getName()} + ' | Liability Type: ' + ${testInstallment.getLiabilityType()}"></p>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/head.html :: head('Home Page')"><title>MMS</title></head>
 
-    <div th:insert="fragments/test.html"></div>
+<body>
+    <header th:replace="fragments/header.html"></header>
+    <section>
+        <div th:replace="fragments/expenseList.html :: expenseList (expenseArray = ${expenseDB})"></div>
+    </section>
 
 </body>
 </html>
