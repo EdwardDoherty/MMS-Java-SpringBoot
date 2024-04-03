@@ -1,0 +1,15 @@
+@use "../base/variables" as *;
+
+.expandedBills {
+    margin-top: -16px;
+    margin-left: 2vw;
+    margin-bottom: 32px;
+    background-color: var(--medLightGreen);
+    border-left: 4px solid var(--darkGreen);
+}
+
+.expandedBills p {
+    padding: 1em;
+    margin:0;
+    color:var(--black) !important;
+}

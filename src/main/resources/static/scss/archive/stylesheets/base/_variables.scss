@@ -1,0 +1,19 @@
+// CSS variables (editable on the client side)
+// Keep colors in CSS so that themes can be implemented on the client side
+
+:root {
+    --medGreen: #04e892;
+    --medDarkGreen: #02a266;
+    --medLightGreen: #a0f4d7;
+    --black: #00150d;
+    --darkGreen:  #002E1D;
+    --whiteGreen:#e4e6eb;
+    --darkMode: #242427;
+    --white: #ffffff;
+}
+
+// SASS variables (Evaluated on the server side)
+// Example: $tabletBP: 800px;
+
+$TabletMinBP: 768px;
+$MobileMaxBP: 478px;

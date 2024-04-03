@@ -1,0 +1,21 @@
+
+// variables come first so that everything has access to them
+// Generics come second as they are commonly overwritten, but need access variables
+@use "base/variables";
+@use "components/generics";
+
+@use "base/colorthemes";
+@use "base/utilities";
+
+@use "components/buttons";
+@use "components/dropDown";
+@use "components/expandedBills";
+@use "components/header";
+@use "components/segmentedButtons";
+@use "components/sidebar";
+@use "components/toolbar";
+
+@use "layout/allDebt";
+@use "layout/debtCalc";
+@use "layout/debtStats";
+@use "layout/mainlayout";

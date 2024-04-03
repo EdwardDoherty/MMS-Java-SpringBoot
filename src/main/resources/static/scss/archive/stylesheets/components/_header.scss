@@ -1,0 +1,64 @@
+@use "../base/variables" as *;
+
+// navBar is actually just a header now... I need to rename some stuff since it all got changed with the restyle
+.navBar {
+    display: flex;
+    width: 87.5vw;
+    justify-content: space-between;
+    padding-left: 2.5vw;
+    padding-right: 10vw;
+    padding-top: 2vh;
+    height: 5vh;
+    background-color: var(--medGreen);
+    color: var(--darkGreen);
+    margin-bottom: 0;
+
+    .navTitle {
+        display: flex;
+    }
+
+    h3 {
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif !important;
+        margin-left: 3vw;
+    }
+
+    h5 {
+        text-align: left;
+    }
+
+    i {
+        font-size: 2rem;
+    }
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+        gap: 1em;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        list-style: none;
+
+        a {
+            text-decoration: none;
+            color: var(--darkGreen) !important;
+            font-family: 'Merriweather', Georgia, serif;
+
+            &:hover {
+                color: #e5fcf4 !important;
+            }
+        }
+    }
+}
+
+/* hamburger button */
+#hamburger {
+    cursor: pointer;
+    transition: all 0.1s ease-out;
+}
+
+#hamburger:active {
+    color: var(--whiteGreen);
+}

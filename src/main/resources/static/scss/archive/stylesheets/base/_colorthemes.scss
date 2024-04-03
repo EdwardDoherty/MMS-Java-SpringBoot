@@ -1,0 +1,33 @@
+@use "../base/variables" as *;
+// I'd like to take dark mode and evolve it into a full-blown color theme customizer, but for now, there's a dark mode
+
+.darkMode {
+    background-color: var(--darkMode) !important;
+    color: var(--whiteGreen) !important;
+}
+
+#darkModeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: -1px 1px 0px var(--medDarkGreen);
+    height: 2rem;
+    width: 2rem;
+    background-color: var(--black);
+    border: 1px solid var(--medDarkGreen);
+    color: var(--whiteGreen);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none; 
+}
+
+.darkModeBtnActive {
+    background-color: var(--whiteGreen) !important;
+    border: 1px solid var(--black) !important;
+    box-shadow: -1px 1px 0px var(--black) !important;
+    color: var(--black) !important;
+}

@@ -1,0 +1,15 @@
+@use "../base/variables" as *;
+
+// This allows for the sidebar to function as intended
+#docBody {
+    display: grid;
+    grid-template-columns: max-content auto max-content;
+}
+
+#debtContainer {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: min-content auto;
+    justify-items: center;
+    margin-top: 0;
+}

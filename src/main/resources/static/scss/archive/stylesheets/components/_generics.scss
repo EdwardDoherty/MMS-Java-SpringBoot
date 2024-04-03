@@ -1,0 +1,98 @@
+@use "../base/variables" as *;
+
+html {
+    font-size: 14px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    position: relative;
+    min-height: 100%;
+    box-sizing: border-box;
+
+    @media (min-width: $TabletMinBP) {
+        font-size: 16px;
+    }
+}
+
+body {
+    width: 100%;
+    margin-bottom: 60px;
+    background-color: var(--white);
+    color: var(--black);
+    margin: 0px;
+    overflow: hidden;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', Georgia, serif;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+hr {
+    margin: 1rem 0;
+    color: var(--medGreen);
+    background-color: currentColor;
+    border: 0;
+    opacity: .25;
+    height: 1px;
+}
+
+
+form {
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+label {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+input[type=text] {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    border: 2px solid var(--medDarkGreen);
+    border-radius: 2rem;
+    padding: 0.5rem;
+    
+}
+
+button[type=button] {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.25rem;
+    font-weight: 700;
+    background-color: var(--medGreen);
+    padding: 0.75rem;
+    border-radius: 2rem;
+    border: none;
+    box-shadow: 0px 1px 0px var(--black);
+    user-select: none; 
+    
+    &:active {
+        box-shadow: 0px -1px 0px var(--medLightGreen);
+        color: var(--medLightGreen);
+    }
+}
+

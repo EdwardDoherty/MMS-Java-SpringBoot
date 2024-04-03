@@ -1,0 +1,46 @@
+@use "../base/variables" as *;
+
+// Buttons, need I say more?
+
+.textButton {
+    color:var(--medDarkGreen);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.btn {
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0.375rem 0.75rem;
+    margin: 0;
+    font-size: 1rem;
+    background-color: var(--medGreen);
+    color: var(--black);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    transition: all .15s ease-in-out;
+    font-weight: 900;
+    user-select: none; 
+        &:active {
+            background-color: #e5fcf4;
+        }
+}
+
+.activeBtn {
+    background-color: #e5fcf4;
+    color: var(--black);
+
+    &:active {
+        color: var(--black);
+    }
+
+    &:hover {
+        color: var(--black);
+    }
+}
+
+.payBtn {
+    // I'm not sure this is even being used, but I'm saving it just in case
+    cursor: pointer;
+}
