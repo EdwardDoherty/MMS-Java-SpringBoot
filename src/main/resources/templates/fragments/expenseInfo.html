@@ -1,8 +1,20 @@
 
 
-<details th:fragment="expense (expenseObject)">
+<details th:fragment="expense (expenseObject)" class="expenseInfo">
     <!--/*@thymesVar id="expenseObject" type="com.MMS.MMS.model.Expense"*/-->
-    <summary th:text="${expenseObject.getName()}"></summary>
+    <summary>
+        <span class="sumTitle">
+            <i class="fa-solid fa-caret-right"></i>
+            <span th:text="${expenseObject.getName()}"></span>
+        </span>
+        <span class="sumTools">
+            <button type="button" class="smallButton"><i class="fa-solid fa-circle-info"></i></button>
+            <button type="button" class="smallButton"><i class="fa-solid fa-pen"></i></button>
+            <button type="button" class="smallButton"><i class="fa-solid fa-trash"></i></button>
+        </span>
+
+    </summary>
+    <hr>
     <ul>
         <li th:text="'Cost: ' + ${expenseObject.getCharge()}"></li>
         <li th:text="'Charge Frequency: ' + ${expenseObject.getChargeFrequency()}"></li>
