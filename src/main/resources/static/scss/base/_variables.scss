@@ -1,6 +1,7 @@
 // CSS variables (editable on the client side)
 // Keep colors in CSS so that themes can be implemented on the client side
 
+/*
 :root {
   --medGreen: #04e892;
   --medDarkGreen: #02a266;
@@ -10,6 +11,16 @@
   --whiteGreen:#e4e6eb;
   --darkMode: #242427;
   --white: #ffffff;
+}
+ */
+
+:root {
+  --tanWhite: #fff4e6;
+  --beige: #be9b7b;
+  --warmRed: #854442;
+  --darkBrown: #4b3832;
+  --darkerBrown: #3c2f2f;
+  --brownBlack: #120E0E;
 }
 
 // SASS variables (Evaluated on the server side)
