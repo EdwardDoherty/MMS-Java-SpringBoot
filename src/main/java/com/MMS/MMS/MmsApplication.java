@@ -12,8 +12,6 @@ public class MmsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MmsApplication.class, args);
 
-		// new DummyDatabase();
-
 	}
 
 }
