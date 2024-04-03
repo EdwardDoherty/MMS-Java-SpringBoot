@@ -10,12 +10,15 @@
 //@use "components/buttons";
 //@use "components/dropDown";
 //@use "components/expandedBills";
-//@use "components/header";
+@use "components/header";
 //@use "components/segmentedButtons";
 //@use "components/sidebar";
 //@use "components/toolbar";
+@use "components/expenseInfo";
+@use "components/expenseList";
 
-//@use "layout/allDebt";
-//@use "layout/debtCalc";
-//@use "layout/debtStats";
-//@use "layout/mainlayout";
+//@use "layouts/allDebt";
+//@use "layouts/debtCalc";
+//@use "layouts/debtStats";
+@use "layouts/basicLayout";
+@use "layouts/editScreen";
