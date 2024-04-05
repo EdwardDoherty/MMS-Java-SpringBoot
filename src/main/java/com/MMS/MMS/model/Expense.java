@@ -3,6 +3,7 @@ package com.MMS.MMS.model;
 import com.MMS.MMS.enums.ExpenseType;
 import com.MMS.MMS.enums.PaymentStatus;
 import com.MMS.MMS.util.DateUtil;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 
@@ -20,10 +21,10 @@ public class Expense implements Expenses {
         return chargeFrequency;
     };
     public int getDueDate(){
-        return dueDate.getDateDay();
+        return dueDate;
     };
-    public int getStartDate(){
-        return startDate.getDateDay();
+    public int[] getStartDate(){
+        return startDate;
     };
     public ExpenseType getExpenseType(){
         return expenseType;
@@ -45,16 +46,16 @@ public class Expense implements Expenses {
     public void setName(String name){
         this.name = name;
     };
-    public void setCharge(BigDecimal charge){
-        this.charge = charge;
+    public void setCharge(String charge){
+        this.charge = new BigDecimal(charge);
     };
     public void setChargeFrequency(int chargeFreq){
         this.chargeFrequency = chargeFreq;
     };
-    public void setDueDate(DateUtil dueDate){
+    public void setDueDate(int dueDate){
         this.dueDate = dueDate;
     };
-    public void setStartDate(DateUtil startDate){
+    public void setStartDate(int[] startDate){
         this.startDate = startDate;
     };
     public void setExpenseType(ExpenseType expenseType){
@@ -76,24 +77,24 @@ public class Expense implements Expenses {
     // Constructor
     public Expense(
             String name,
-            BigDecimal charge,
+            String charge,
             int chargeFrequency,
-            DateUtil dueDate,
-            DateUtil startDate,
+            int dueDate,
+            int[] startDate,
             ExpenseType expenseType,
             PaymentStatus paymentStatus,
-            BigDecimal lateFee,
+            String lateFee,
             int gracePeriod,
             String notes
     ){
         this.name = name;
-        this.charge = charge;
+        this.charge = new BigDecimal(charge);
         this.chargeFrequency = chargeFrequency;
         this.dueDate = dueDate;
         this.startDate = startDate;
         this.expenseType = expenseType;
         this.paymentStatus = paymentStatus;
-        this.lateFee = lateFee;
+        this.lateFee = new BigDecimal(lateFee);
         this.gracePeriod = gracePeriod;
         this.notes = notes;
 
@@ -104,8 +105,8 @@ public class Expense implements Expenses {
     private String name;
     private BigDecimal charge;
     private int chargeFrequency;
-    private DateUtil dueDate;
-    private DateUtil startDate;
+    private int dueDate;
+    private int[] startDate;
     private ExpenseType expenseType;
     private PaymentStatus paymentStatus;
     private BigDecimal lateFee;

@@ -4,37 +4,38 @@ import com.MMS.MMS.enums.ExpenseType;
 import com.MMS.MMS.enums.LiabilityType;
 import com.MMS.MMS.enums.PaymentStatus;
 import com.MMS.MMS.util.DateUtil;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 
 public class InstallmentLoan extends Liability {
 
     // Getters
-    public DateUtil getEndDate(){
+    public int[] getEndDate(){
         return endDate;
     };
 
     // Setter
-    public void setEndDate(DateUtil endDate){
+    public void setEndDate(int[] endDate){
         this.endDate = endDate;
     };
 
     // Constructors
     public InstallmentLoan (
             String name,
-            BigDecimal charge,
+            String charge,
             int chargeFrequency,
-            DateUtil dueDate,
-            DateUtil startDate,
+            int dueDate,
+            int[] startDate,
             ExpenseType expenseType,
             PaymentStatus paymentStatus,
-            BigDecimal lateFee,
+            String lateFee,
             int gracePeriod,
             String notes,
-            BigDecimal totalBalance,
+            String totalBalance,
             LiabilityType liabilityType,
-            BigDecimal interestRate,
-            DateUtil endDate
+            String interestRate,
+            int[] endDate
     ){
         super(  name,
                 charge,
@@ -54,7 +55,7 @@ public class InstallmentLoan extends Liability {
     }
 
     // Private Variables
-    private DateUtil endDate;
+    private int[] endDate = null;
 
 
 }

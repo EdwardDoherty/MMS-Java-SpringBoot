@@ -21,31 +21,31 @@ public class Liability extends Expense implements Liabilities {
     };
 
     // Setters
-    public void setTotalBalance(BigDecimal totalBal){
-        this.totalBalance = totalBal;
+    public void setTotalBalance(String totalBal){
+        this.totalBalance = new BigDecimal(totalBal);
     };
     public void setLiabilityType(LiabilityType liabType){
         this.liabilityType = liabType;
     };
-    public void setInterestRate(BigDecimal interest){
-        this.interestRate = interest;
+    public void setInterestRate(String interest){
+        this.interestRate = new BigDecimal(interest);
     };
 
     // Constructor
     public Liability (
             String name,
-            BigDecimal charge,
+            String charge,
             int chargeFrequency,
-            DateUtil dueDate,
-            DateUtil startDate,
+            int dueDate,
+            int[] startDate,
             ExpenseType expenseType,
             PaymentStatus paymentStatus,
-            BigDecimal lateFee,
+            String lateFee,
             int gracePeriod,
             String notes,
-            BigDecimal totalBalance,
+            String totalBalance,
             LiabilityType liabilityType,
-            BigDecimal interestRate
+            String interestRate
     ){
         super(  name,
                 charge,
@@ -57,9 +57,9 @@ public class Liability extends Expense implements Liabilities {
                 lateFee,
                 gracePeriod,
                 notes);
-            this.totalBalance = totalBalance;
+            this.totalBalance = new BigDecimal(totalBalance);
             this.liabilityType = liabilityType;
-            this.interestRate = interestRate;
+            this.interestRate = new BigDecimal(interestRate);
 
     }
 
