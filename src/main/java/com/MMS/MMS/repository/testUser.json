@@ -1,0 +1,58 @@
+{
+  "User": {
+    "name": "Test User",
+    "UserExpenses": [
+      {
+        "name": "Test Expense",
+        "charge": 20.00,
+        "chargeFreq": 1,
+        "dueDate": 1,
+        "startDate": null,
+        "expenseType": "UTILITY",
+        "paymentStatus": "UNPAID",
+        "lateFee": 0,
+        "gracePeriod": 30,
+        "notes": "Test expense. This is from the database"
+      },
+      {
+        "name": "Test Liability",
+        "charge": 45.00,
+        "chargeFreq": 1,
+        "dueDate": 15,
+        "startDate": null,
+        "expenseType": "LIABILITY",
+        "paymentStatus": "UNPAID",
+        "lateFee": 15,
+        "gracePeriod": 0,
+        "notes": "Test liability. This is from the database",
+        "totalBalance": 500,
+        "liabilityType": "CREDITCARD",
+        "interestRate": 5.95
+      },
+      {
+        "name": "Test Installment",
+        "charge": 150.00,
+        "chargeFreq": 1,
+        "dueDate": 26,
+        "startDate": [
+          2024,
+          4,
+          15
+        ],
+        "expenseType": "LIABILITY",
+        "paymentStatus": "UNPAID",
+        "lateFee": 45,
+        "gracePeriod": 2,
+        "notes": "Test installment loan. This is from the database",
+        "totalBalance": 2500,
+        "liabilityType": "INSTALLMENTLOAN",
+        "interestRate": 27.99,
+        "endDate": [
+          2025,
+          1,
+          30
+        ]
+      }
+    ]
+  }
+}
