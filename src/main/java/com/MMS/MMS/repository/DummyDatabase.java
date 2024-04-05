@@ -25,50 +25,51 @@ public class DummyDatabase {
         dummyDatabase.add(
                 new Expense(
                         "Test Expense",
-                        new BigDecimal("20.00"),
+                        "20.00",
                         1,
-                        new DateUtil(1),
-                        new DateUtil(0),
+                        1,
+                        null,
                         ExpenseType.UTILITY,
                         PaymentStatus.UNPAID,
-                        new BigDecimal("0"),
+                        "0",
                         30,
                         "Test Expense. These are the notes! Exciting, right?"
-                ));
-        dummyDatabase.add(
-                new Liability(
-                        "Test Liability",
-                        new BigDecimal("45.00"),
-                        1,
-                        new DateUtil(15),
-                        new DateUtil(0),
-                        ExpenseType.LIABILITY,
-                        PaymentStatus.UNPAID,
-                        new BigDecimal("15"),
-                        0,
-                        "Test Liability. Notes Notes Notes.",
-                        new BigDecimal("500"),
-                        LiabilityType.CREDITCARD,
-                        new BigDecimal("5.95")
                 )
         );
         dummyDatabase.add(
-            new InstallmentLoan(
-                    "Test Installment",
-                    new BigDecimal("150.00"),
-                    1,
-                    new DateUtil(26),
-                    new DateUtil(0),
-                    ExpenseType.LIABILITY,
-                    PaymentStatus.UNPAID,
-                    new BigDecimal("45"),
-                    2,
-                    "This is a test installment loan.",
-                    new BigDecimal("2500"),
-                    LiabilityType.INSTALLMENTLOAN,
-                    new BigDecimal("27.99"),
-                    new DateUtil(30)
-            )
+                new Liability(
+                        "Test Liability",
+                        "45.00",
+                        1,
+                        15,
+                        null,
+                        ExpenseType.LIABILITY,
+                        PaymentStatus.UNPAID,
+                        "15",
+                        0,
+                        "Test Liability. Notes Notes Notes.",
+                        "500",
+                        LiabilityType.CREDITCARD,
+                        "5.95"
+                )
+        );
+        dummyDatabase.add(
+                new InstallmentLoan(
+                        "Test Installment",
+                        "150.00",
+                        1,
+                        26,
+                        null,
+                        ExpenseType.LIABILITY,
+                        PaymentStatus.UNPAID,
+                        "45",
+                        2,
+                        "This is a test installment loan.",
+                        "2500",
+                        LiabilityType.INSTALLMENTLOAN,
+                        "27.99",
+                        null
+                )
         );
     }
 
