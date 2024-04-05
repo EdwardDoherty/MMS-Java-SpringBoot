@@ -2,12 +2,11 @@ package com.MMS.MMS.model;
 
 import com.MMS.MMS.enums.ExpenseType;
 import com.MMS.MMS.enums.PaymentStatus;
-import com.MMS.MMS.util.DateUtil;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
-public class Expense implements Expenses {
+public class Expense {
 
     // Getters
     public String getName(){
@@ -23,7 +22,7 @@ public class Expense implements Expenses {
     public int getDueDate(){
         return dueDate;
     };
-    public int[] getStartDate(){
+    public LocalDate getStartDate(){
         return startDate;
     };
     public ExpenseType getExpenseType(){
@@ -40,7 +39,15 @@ public class Expense implements Expenses {
     };
     public String getNotes(){
         return notes;
-    };
+    }
+    public BigDecimal getTotalBalance() {
+        return null;
+    }
+    public BigDecimal getInterestRate() {
+        return null;
+    }
+
+
 
     // Setters
     public void setName(String name){
@@ -55,7 +62,7 @@ public class Expense implements Expenses {
     public void setDueDate(int dueDate){
         this.dueDate = dueDate;
     };
-    public void setStartDate(int[] startDate){
+    public void setStartDate(LocalDate startDate){
         this.startDate = startDate;
     };
     public void setExpenseType(ExpenseType expenseType){
@@ -80,7 +87,7 @@ public class Expense implements Expenses {
             String charge,
             int chargeFrequency,
             int dueDate,
-            int[] startDate,
+            LocalDate startDate,
             ExpenseType expenseType,
             PaymentStatus paymentStatus,
             String lateFee,
@@ -99,6 +106,63 @@ public class Expense implements Expenses {
         this.notes = notes;
 
     }
+    public Expense(
+            String name,
+            String charge,
+            int chargeFrequency,
+            int dueDate,
+            LocalDate startDate,
+            ExpenseType expenseType,
+            PaymentStatus paymentStatus,
+            String lateFee,
+            int gracePeriod,
+            String notes,
+            String totalBalance,
+            String interestRate
+    ){
+        this.name = name;
+        this.charge = new BigDecimal(charge);
+        this.chargeFrequency = chargeFrequency;
+        this.dueDate = dueDate;
+        this.startDate = startDate;
+        this.expenseType = expenseType;
+        this.paymentStatus = paymentStatus;
+        this.lateFee = new BigDecimal(lateFee);
+        this.gracePeriod = gracePeriod;
+        this.notes = notes;
+        this.totalBalance = new BigDecimal(totalBalance);
+        this.interestRate = new BigDecimal(interestRate);
+    }
+
+    public Expense(
+            String name,
+            String charge,
+            int chargeFrequency,
+            int dueDate,
+            LocalDate startDate,
+            ExpenseType expenseType,
+            PaymentStatus paymentStatus,
+            String lateFee,
+            int gracePeriod,
+            String notes,
+            String totalBalance,
+            String interestRate,
+            LocalDate endDate
+    ){
+        this.name = name;
+        this.charge = new BigDecimal(charge);
+        this.chargeFrequency = chargeFrequency;
+        this.dueDate = dueDate;
+        this.startDate = startDate;
+        this.expenseType = expenseType;
+        this.paymentStatus = paymentStatus;
+        this.lateFee = new BigDecimal(lateFee);
+        this.gracePeriod = gracePeriod;
+        this.notes = notes;
+        this.totalBalance = new BigDecimal(totalBalance);
+        this.interestRate = new BigDecimal(interestRate);
+        this.endDate = endDate;
+    }
 
 
     // Private Variables
@@ -106,12 +170,13 @@ public class Expense implements Expenses {
     private BigDecimal charge;
     private int chargeFrequency;
     private int dueDate;
-    private int[] startDate;
+    private LocalDate startDate;
     private ExpenseType expenseType;
     private PaymentStatus paymentStatus;
     private BigDecimal lateFee;
     private int gracePeriod;
     private String notes;
-
-
+    private BigDecimal totalBalance;
+    private BigDecimal interestRate;
+    private LocalDate endDate;
 }

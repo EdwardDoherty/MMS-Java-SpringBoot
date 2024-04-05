@@ -1,26 +1,17 @@
 package com.MMS.MMS;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 import com.MMS.MMS.enums.ExpenseType;
-import com.MMS.MMS.enums.LiabilityType;
 import com.MMS.MMS.enums.PaymentStatus;
 import com.MMS.MMS.model.*;
 import com.MMS.MMS.repository.UserRepository;
-import com.MMS.MMS.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
@@ -28,72 +19,40 @@ import org.springframework.context.annotation.Bean;
 public class MmsApplication implements CommandLineRunner{
 
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(MmsApplication.class, args);
 
 
-
 	}
 
+	@Override
 	public void run(String... args){
-		createUser();
-	}
+		userRepository.deleteAll();
 
-	@Bean
-	User createUser() {
-        ArrayList<Expense> userExpense = new ArrayList<Expense>();
-		userExpense.add(new Expense(
-				"Test Expense",
-				"20.00",
-				1,
-				1,
-                null,
-				ExpenseType.UTILITY,
-				PaymentStatus.UNPAID,
-				"0",
-				30,
-				"Test expense. Added to database from java"
-		));
-		userExpense.add(new Liability(
-				"Test Liability",
-				"45.00",
-				1,
-				15,
-				null,
-				ExpenseType.LIABILITY,
-				PaymentStatus.UNPAID,
-				"15.00",
-				0,
-				"Test Liability. Added to database from java",
-				"500",
-				LiabilityType.CREDITCARD,
-				"5.95"
-		));
-		userExpense.add(new InstallmentLoan(
-				"Test Installment Loan",
-				"150.00",
-				1,
-				26,
-				null,
-				ExpenseType.LIABILITY,
-				PaymentStatus.UNPAID,
-				"45.00",
-				2,
-				"Test Installment Loan. Added to database from java",
-				"2500",
-				LiabilityType.INSTALLMENTLOAN,
-				"27.99",
-				null
-		));
+		userRepository.save(new User("0001","User 1", new ArrayList<Expense>()));
+		userRepository.save(new User("0002","User 2", new ArrayList<Expense>()));
 
-		System.out.println("Creating User...");
-		User testUser = new User("0000", "Test User", userExpense);
-		userRepository.save(testUser);
+		for(User user : userRepository.findAll()) {
+			System.out.println(user);
+		}
 
-		return testUser;
+		System.out.println(userRepository.findUserByUserName("User 1"));
+
+		User billyEyelash = userRepository.findUserByUserName("User 1");
+		billyEyelash.setUserName("Billy Eyelash");
+
+		userRepository.save(billyEyelash);
+
+		for(User user : userRepository.findAll()) {
+			System.out.println(user);
+		}
+
+
 
 	}
+
+
 
 }

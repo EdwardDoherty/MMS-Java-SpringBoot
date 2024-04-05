@@ -6,6 +6,7 @@ public enum ExpenseType {
     INSURANCE,
     STREAMING,
     MISCELLANEOUS,
-    LIABILITY
+    INSTALLMENTLOAN,
+    CREDITCARD
 
 }

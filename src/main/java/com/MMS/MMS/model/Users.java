@@ -7,7 +7,7 @@ public interface Users {
 
     public String getUserName();
 
-    public void setUserName();
+    public void setUserName(String userName);
 
     public ArrayList<Expense> getUserExpenses();
 

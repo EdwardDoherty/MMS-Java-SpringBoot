@@ -16,8 +16,8 @@ public class User implements Users {
         return userName;
     }
 
-    public void setUserName(){
-
+    public void setUserName(String userName){
+        this.userName = userName;
     }
 
     public ArrayList<Expense> getUserExpenses(){
@@ -32,6 +32,14 @@ public class User implements Users {
         this.userID = userID;
         this.userName = userName;
         this.userExpenses = userExpenses;
+    }
+
+    @Override
+    public String toString(){
+        return String.format(
+                "User[userID=%s, userName='%s']",
+                userID, userName
+        );
     }
 
     @Id
