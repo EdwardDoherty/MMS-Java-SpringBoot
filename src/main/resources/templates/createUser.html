@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/head.html :: head('Home Page')}"><title>MMS</title></head>
+
+<body>
+<header th:replace="~{fragments/header.html}"></header>
+
+
+    <form th:action="@{/addUser}" th:object="${newUser}" th:method="post">
+        <label>Enter Username: </label>
+        <input type="text" th:field="*{userName}">
+        <input type="submit" th:value="Submit">
+        <button type="submit" onclick="return confirm('Are you sure?')">DELETE USER</button>
+    </form>
+
+</body>
+</html>
