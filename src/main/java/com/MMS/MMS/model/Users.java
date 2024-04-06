@@ -1,9 +1,11 @@
 package com.MMS.MMS.model;
 
+import org.bson.types.ObjectId;
+
 import java.util.ArrayList;
 
 public interface Users {
-    public String getUserID();
+    public ObjectId getUserID();
 
     public String getUserName();
 

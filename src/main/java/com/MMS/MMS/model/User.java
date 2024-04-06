@@ -1,14 +1,16 @@
 package com.MMS.MMS.model;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 
+
 @Document("MMSData")
 public class User implements Users {
 
-    public String getUserID() {
+    public ObjectId getUserID() {
         return userID;
     }
 
@@ -28,10 +30,13 @@ public class User implements Users {
 
     }
 
-    public User(String userID, String userName, ArrayList<Expense> userExpenses){
-        this.userID = userID;
+    public User(){
+
+    }
+
+    public User(String userName){
+        this.userID = new ObjectId();
         this.userName = userName;
-        this.userExpenses = userExpenses;
     }
 
     @Override
@@ -43,7 +48,7 @@ public class User implements Users {
     }
 
     @Id
-    private String userID;
+    private ObjectId userID;
     private String userName;
     private ArrayList<Expense> userExpenses;
 
