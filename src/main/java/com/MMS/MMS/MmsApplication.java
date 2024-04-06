@@ -18,38 +18,14 @@ import org.springframework.context.annotation.Bean;
 @EnableMongoRepositories
 public class MmsApplication implements CommandLineRunner{
 
-	@Autowired
-	private UserRepository userRepository;
-
 	public static void main(String[] args) {
 		SpringApplication.run(MmsApplication.class, args);
-
 
 	}
 
 	@Override
 	public void run(String... args){
-		userRepository.deleteAll();
-
-		userRepository.save(new User("0001","User 1", new ArrayList<Expense>()));
-		userRepository.save(new User("0002","User 2", new ArrayList<Expense>()));
-
-		for(User user : userRepository.findAll()) {
-			System.out.println(user);
-		}
-
-		System.out.println(userRepository.findUserByUserName("User 1"));
-
-		User billyEyelash = userRepository.findUserByUserName("User 1");
-		billyEyelash.setUserName("Billy Eyelash");
-
-		userRepository.save(billyEyelash);
-
-		for(User user : userRepository.findAll()) {
-			System.out.println(user);
-		}
-
-
+		
 
 	}
 
