@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/head.html :: head('Home Page')}"><title>MMS</title></head>
+
+<body>
+<header th:replace="~{fragments/header.html}"></header>
+
+    <div th:each="user: ${users}">
+        <div th:text="${user.getUserID()}"></div>
+        <div th:text="${user.getUserName()}"></div>
+        <form th:action="@{/delete/{id}(id = ${user.getUserID()})}" th:object="${user}" th:method="post">
+<!--            <input type="hidden" th:field="${user}">Delete</input>-->
+            <button type="submit" onclick="return confirm('Are you sure?')">DELETE USER</button>
+        </form>
+    </div>
+
+</body>
+</html>
