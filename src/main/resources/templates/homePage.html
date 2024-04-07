@@ -4,25 +4,7 @@
 
 <body>
     <header th:replace="~{fragments/header.html}"></header>
-    <section class="editScreen">
-        <div class="sidebar leftSideBar">
-            <button type="button">Dashboard</button>
-            <button type="button">Cash Flow</button>
-            <button type="button">View/Edit</button>
-            <button type="button">Simulate</button>
-            <button type="button">Strategy</button>
-            <button type="button">Help</button>
-        </div>
-        <div class="workArea">
-            <div th:replace="~{fragments/expenseList.html :: expenseList (expenseArray = ${expenseDB})}"></div>
-        </div>
-        <div class="sidebar rightSidebar">
-            <button type="button">Tool</button>
-            <button type="button">Tool</button>
-            <button type="button">Tool</button>
-        </div>
 
-    </section>
 
 
 
