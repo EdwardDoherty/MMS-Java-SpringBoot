@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/head.html :: head('Dashboard')}"><title>MMS</title></head>
+
+<body>
+    <header th:replace="~{fragments/header.html}"></header>
+
+    <h1>DASHBOARD</h1>
+    <h3 th:text="'Welcome ' + ${session.loggedUser.getUserName()} +'!'"></h3>
+    <div th:text="${session.loggedUser.getUserID()}"></div>
+    <div th:text="${session.loggedUser.getUserName()}"></div>
+
+</body>
+</html>
