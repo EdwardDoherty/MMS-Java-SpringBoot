@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/head.html :: head('Login')}"><title>MMS</title></head>
+
+<body>
+<header th:replace="~{fragments/header.html}"></header>
+
+<h1 th:if="${param.error != null}" class="errorMessage">
+    There was an error logging you in. Check your username and password.
+</h1>
+
+<div th:each="user: ${users}">
+<!--    <div th:text="${user.getUserID()}"></div>-->
+    <div th:text="${user.getUserName()}"></div>
+    <form th:action="@{/user/{id}(id = ${user.getUserID()})}" th:object="${user}" th:method="post">
+        <!--            <input type="hidden" th:field="${user}">Delete</input>-->
+        <button type="submit">Log In</button>
+    </form>
+</div>
+
+</body>
+</html>
