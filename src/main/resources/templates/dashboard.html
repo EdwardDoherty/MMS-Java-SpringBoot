@@ -7,8 +7,7 @@
 
     <h1>DASHBOARD</h1>
     <h3 th:text="'Welcome ' + ${session.loggedUser.getUserName()} +'!'"></h3>
-    <div th:text="${session.loggedUser.getUserID()}"></div>
-    <div th:text="${session.loggedUser.getUserName()}"></div>
+    <a th:href="createExpense">Create Expense</a>
 
 </body>
 </html>
