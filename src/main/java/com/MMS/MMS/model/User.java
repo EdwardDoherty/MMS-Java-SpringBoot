@@ -3,31 +3,20 @@ package com.MMS.MMS.model;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.ArrayList;
 
-
-@Document("MMSData")
-public class User implements Users {
+//@ModelAttribute("user")
+@Document("Users")
+public class User {
 
     public ObjectId getUserID() {
-        return userID;
+        return this.userID;
     }
 
     public String getUserName(){
-        return userName;
-    }
-
-    public void setUserName(String userName){
-        this.userName = userName;
-    }
-
-    public ArrayList<Expense> getUserExpenses(){
-        return userExpenses;
-    }
-
-    public void setUserExpenses(){
-
+        return this.userName;
     }
 
     public User(){
@@ -50,6 +39,5 @@ public class User implements Users {
     @Id
     private ObjectId userID;
     private String userName;
-    private ArrayList<Expense> userExpenses;
 
 }

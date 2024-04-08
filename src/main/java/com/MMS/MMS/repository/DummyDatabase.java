@@ -3,6 +3,8 @@ package com.MMS.MMS.repository;
 import com.MMS.MMS.enums.ExpenseType;
 import com.MMS.MMS.enums.PaymentStatus;
 import com.MMS.MMS.model.Expense;
+import com.MMS.MMS.model.OperatingExpense;
+import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 
@@ -18,7 +20,8 @@ public class DummyDatabase {
 
     public void BuildArrayList(){
         dummyDatabase.add(
-                new Expense(
+                new OperatingExpense(
+                        dummyID,
                         "Test Expense",
                         "20.00",
                         1,
@@ -32,7 +35,8 @@ public class DummyDatabase {
                 )
         );
         dummyDatabase.add(
-                new Expense(
+                new OperatingExpense(
+                        dummyID,
                         "Test Liability",
                         "45.00",
                         1,
@@ -48,7 +52,8 @@ public class DummyDatabase {
                 )
         );
         dummyDatabase.add(
-                new Expense(
+                new OperatingExpense(
+                        dummyID,
                         "Test Installment",
                         "150.00",
                         1,
@@ -67,7 +72,7 @@ public class DummyDatabase {
     }
 
     private ArrayList<Expense> dummyDatabase = new ArrayList<Expense>();
-
+    private ObjectId dummyID = new ObjectId();
 
 
 
