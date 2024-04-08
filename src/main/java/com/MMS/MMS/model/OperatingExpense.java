@@ -8,8 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-
-@Document("Expenses")
+//
+//@Document("Expenses")
 public class OperatingExpense implements Expense {
 
     // Getters
@@ -61,6 +61,10 @@ public class OperatingExpense implements Expense {
     }
 
     // Setters
+    public void setUserID(ObjectId userID) {
+        this.userID = userID;
+    }
+
     public void setName(String name){
         this.name = name;
     };
@@ -92,6 +96,8 @@ public class OperatingExpense implements Expense {
         this.notes = notes;
     };
 
+
+    // Constructor
     public OperatingExpense(){
         this.expenseID = new ObjectId();
     }
@@ -111,7 +117,6 @@ public class OperatingExpense implements Expense {
         this.notes = notes;
     }
 
-    // Constructor
     public OperatingExpense(
             ObjectId userID,
             String name,

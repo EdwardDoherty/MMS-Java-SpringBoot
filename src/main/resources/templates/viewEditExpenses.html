@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/head.html :: head('Dashboard')}"><title>MMS</title></head>
+
+<body>
+<header th:replace="~{fragments/header.html}"></header>
+
+<p th:if="${param.error != null}" class="errorMessage">
+    There was an error creating your expense. Please try again.
+</p>
+
+<section class="editScreen">
+    <div th:replace="~{fragments/leftSidebar.html}"></div>
+
+    <div class="workArea">
+<!--        <div th:replace="~{fragments/addExpense.html :: addExpense (newExpense = ${newExpense})}"></div>-->
+
+        <div>
+            <form th:action="@{/addExpense}" th:object="${newExpense}" th:method="post">
+                <label>Enter Expense Name: </label>
+                <input type="text" th:field="*{name}">
+                <label>Enter Expense Notes: </label>
+                <input type="text" th:field="*{notes}">
+
+                <button type="submit" onclick="return confirm('Are you sure?')">Create Expense</button>
+            </form>
+        </div>
+
+        <div th:replace="~{fragments/expenseList.html :: expenseList (expenseArray = ${allExpenses})}"></div>
+
+
+
+    </div>
+
+    <div th:replace="~{fragments/rightSidebar.html}"></div>
+
+</section>
+
+</body>
+</html>

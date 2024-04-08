@@ -3,10 +3,12 @@ package com.MMS.MMS.model;
 import com.MMS.MMS.enums.ExpenseType;
 import com.MMS.MMS.enums.PaymentStatus;
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Document("Expenses")
 public interface Expense {
 
     public ObjectId getExpenseID();
