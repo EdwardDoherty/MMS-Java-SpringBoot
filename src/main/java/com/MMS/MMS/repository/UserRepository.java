@@ -7,4 +7,6 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     public User findUserByUserName(String userName);
 
+    public long count();
+
 }

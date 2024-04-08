@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.ArrayList;
 
-//@ModelAttribute("user")
 @Document("Users")
 public class User {
 
@@ -19,8 +18,12 @@ public class User {
         return this.userName;
     }
 
-    public User(){
+    public void setUserName(String userName){
+        this.userName = userName;
+    }
 
+    public User(){
+        this.userID = new ObjectId();
     }
 
     public User(String userName){

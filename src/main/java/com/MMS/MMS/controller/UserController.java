@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@SessionAttributes("loggedUser")
 public class UserController {
 
     @Autowired
@@ -17,12 +16,14 @@ public class UserController {
     private User user;
     private Model model;
 
-
     @PostMapping("/addUser")
-    public String addUser(@ModelAttribute User user, Model model) {
-        userRepository.save(user);
+    public String addUser(Model model, @ModelAttribute("newUser") User newUser) {
+        if(newUser.getUserName() != null && !newUser.getUserName().equals("")) {
+            userRepository.save(newUser);
+            return "redirect:/login";
+        }
 
-        return "redirect:/getAllUsers";
+        return "redirect:/createAccount?error=true";
     }
 
     @GetMapping("/getAllUsers")

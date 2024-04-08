@@ -59,18 +59,32 @@ public class PageController {
         return "redirect:/login?error=true";
     }
 
+    // View & Edit Expenses Page
+    @GetMapping(value="/viewExpenses")
+    public String viewExpenses(HttpSession session, Model model) {
+
+        User loggedUser = (User) session.getAttribute("loggedUser");
+        OperatingExpense newExpense = new OperatingExpense(loggedUser.getUserID());
+        model.addAttribute("allExpenses", expenseRepository.findAllByUserID(loggedUser.getUserID()));
+        model.addAttribute("newExpense", newExpense);
+    return "viewEditExpenses";
+    }
+
     // Create Account page
     @GetMapping(value = "/createAccount")
     public String createAccount(Model model){
-        model.addAttribute("newUser", new User());
+        User newUser = new User();
+        model.addAttribute("newUser", newUser);
 
         return "createAccount";
     }
 
     // Create Expense page
     @GetMapping(value = "/createExpense")
-    public String createExpense(Model model){
-        model.addAttribute("newExpense", new OperatingExpense());
+    public String createExpense(Model model, HttpSession session){
+        User loggedUser = (User) session.getAttribute("loggedUser");
+        OperatingExpense newExpense = new OperatingExpense(loggedUser.getUserID());
+        model.addAttribute("newExpense", newExpense);
 
         return "createExpense";
     }

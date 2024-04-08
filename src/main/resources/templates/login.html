@@ -5,16 +5,25 @@
 <body>
 <header th:replace="~{fragments/header.html}"></header>
 
-<h1 th:if="${param.error != null}" class="errorMessage">
-    There was an error logging you in. Check your username and password.
-</h1>
+<main>
 
-<div th:each="user: ${users}">
-    <div th:text="${user.getUserName()}"></div>
-    <form th:action="@{/user/{id}(id = ${user.getUserID()})}" th:object="${user}" th:method="post">
-        <button type="submit">Log In</button>
-    </form>
-</div>
+    <p th:if="${param.error != null}" class="errorMessage">
+        There was an error logging you in. Check your username and password.
+    </p>
+
+    <div th:each="user: ${users}">
+        <h3 th:text="${user.getUserName()}"></h3>
+        <form th:action="@{/user/{id}(id = ${user.getUserID()})}" th:object="${user}" th:method="post">
+            <button class="button" type="submit">Log In</button>
+        </form>
+    </div>
+
+    <hr>
+
+    <a class="button" th:href="createAccount">Create Account</a>
+
+
+</main>
 
 </body>
 </html>
