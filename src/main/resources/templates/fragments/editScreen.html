@@ -1,10 +1,10 @@
 <section class="editScreen">
-    <div th:replace="leftSidebar"></div>
+    <div th:replace="~{fragments/leftSidebar.html}"></div>
 
     <div class="workArea">
         <div th:replace="~{fragments/expenseList.html :: expenseList (expenseArray = ${expenseDB})}"></div>
     </div>
 
-    <div th:replace="rightSidebar"></div>
+    <div th:replace="~{fragments/rightSidebar.html}"></div>
 
 </section>

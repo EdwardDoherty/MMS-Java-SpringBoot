@@ -106,7 +106,14 @@ input[type=text] {
   padding: 0.5rem;
 }
 
-button[type=button] {
+main {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.button {
+  display: inline-flex;
+  text-decoration: none;
   font-size: 1.25rem;
   font-weight: 700;
   background-color: var(--tanWhite);
@@ -117,7 +124,7 @@ button[type=button] {
   border: 2px outset var(--brownBlack);
   user-select: none;
 }
-button[type=button]:hover {
+.button:hover {
   border: 2px inset var(--beige);
   background-color: var(--warmRed);
   color: var(--tanWhite);
@@ -155,14 +162,33 @@ button[type=button]:hover {
 }
 
 header {
-  padding: 0.75rem 2rem 0.75rem 2rem;
+  padding: 0.75rem 2em 0.75rem 2rem;
   border-bottom: 4px solid var(--warmRed);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header nav {
+  justify-content: flex-end;
 }
 header h1 {
   margin: 0;
 }
 header p {
   margin: 0;
+}
+
+.errorMessage {
+  display: flex;
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  background-color: var(--tanWhite);
+  color: var(--warmRed);
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border: 2px solid var(--warmRed);
+  user-select: none;
 }
 
 .expenseInfo {

@@ -4,10 +4,17 @@
 
 <body>
     <header th:replace="~{fragments/header.html}"></header>
+    <section class="editScreen">
 
-    <h1>DASHBOARD</h1>
-    <h3 th:text="'Welcome ' + ${session.loggedUser.getUserName()} +'!'"></h3>
-    <a th:href="createExpense">Create Expense</a>
+        <div th:replace="~{fragments/leftSidebar.html}"></div>
 
+        <div class="workArea">
+            <h1>DASHBOARD</h1>
+            <h3 th:text="'Welcome ' + ${session.loggedUser.getUserName()} +'!'"></h3>
+            <a th:href="createExpense">Create Expense</a>
+        </div>
+
+        <div th:replace="~{fragments/rightSidebar.html}"></div>
+    </section>
 </body>
 </html>

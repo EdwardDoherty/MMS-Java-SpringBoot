@@ -1,10 +1,10 @@
+<div th:fragment="addExpense (newExpense)" >
+    <form th:action="@{/addExpense}" th:object="${newExpense}" th:method="post">
+        <label>Enter Expense Name: </label>
+        <input type="text" th:field="*{name}">
+        <label>Enter Expense Notes: </label>
+        <input type="text" th:field="*{notes}">
 
-<form th:action="@{/addExpense}" th:object="${newExpense}" th:method="post">
-    <label>Enter Expense Name: </label>
-    <input type="text" th:field="*{name}">
-    <label>Enter Expense Notes: </label>
-    <input type="text" th:field="*{notes}">
-
-    <input type="submit" th:value="Submit">
-    <button type="submit" onclick="return confirm('Are you sure?')">Create User</button>
-</form>
+        <button type="submit" onclick="return confirm('Are you sure?')">Create Expense</button>
+    </form>
+</div>

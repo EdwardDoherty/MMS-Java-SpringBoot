@@ -1,0 +1,37 @@
+
+.editScreen {
+  display: grid;
+  grid-template-columns: 1fr 10.5fr 0.5fr;
+  height: 100%;
+  width: 100%;
+
+  .sidebar {
+    background-color: var(--beige);
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    &.leftSideBar {
+      border-right: 4px solid var(--warmRed);
+      margin-right: 0.5rem;
+    }
+
+    &.rightSidebar {
+      border-left: 4px solid var(--warmRed);
+      margin-left: 0.5rem;
+    }
+
+    button {
+      font-size: medium;
+    }
+
+  }
+
+
+  .workArea {
+    //margin-left: auto;
+    //margin-right: auto;
+    margin-top: 0.5rem;
+  }
+}

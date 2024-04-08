@@ -11,6 +11,7 @@
 //@use "components/dropDown";
 //@use "components/expandedBills";
 @use "components/header";
+@use "components/errorMessage";
 //@use "components/segmentedButtons";
 //@use "components/sidebar";
 //@use "components/toolbar";
@@ -21,4 +22,4 @@
 //@use "layouts/debtCalc";
 //@use "layouts/debtStats";
 @use "layouts/basicLayout";
-@use "layouts/editScreen";
+//@use "layouts/editScreen";
