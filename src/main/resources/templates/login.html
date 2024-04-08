@@ -10,10 +10,8 @@
 </h1>
 
 <div th:each="user: ${users}">
-<!--    <div th:text="${user.getUserID()}"></div>-->
     <div th:text="${user.getUserName()}"></div>
     <form th:action="@{/user/{id}(id = ${user.getUserID()})}" th:object="${user}" th:method="post">
-        <!--            <input type="hidden" th:field="${user}">Delete</input>-->
         <button type="submit">Log In</button>
     </form>
 </div>
