@@ -8,9 +8,17 @@
             <span th:text="${expenseObject.getName()}"></span>
         </span>
         <span class="sumTools">
-            <button type="button" class="smallButton"><i class="fa-solid fa-circle-info"></i></button>
-            <button type="button" class="smallButton"><i class="fa-solid fa-pen"></i></button>
-            <button type="button" class="smallButton"><i class="fa-solid fa-trash"></i></button>
+<!--            <a class="smallButton"><i class="fa-solid fa-circle-info"></i></a>-->
+<!--            <a class="smallButton"><i class="fa-solid fa-pen"></i></a>-->
+            <form th:action="@{/deleteExpense/{id}(id = ${expenseObject.getExpenseID()})}" th:object="${expenseObject}" th:method="post">
+                <button class="button smallButton" type="submit" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-circle-info"></i></button>
+            </form>
+            <form th:action="@{/deleteExpense/{id}(id = ${expenseObject.getExpenseID()})}" th:object="${expenseObject}" th:method="post">
+                <button class="button smallButton" type="submit" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-pen"></i></button>
+            </form>
+            <form th:action="@{/deleteExpense/{id}(id = ${expenseObject.getExpenseID()})}" th:object="${expenseObject}" th:method="post">
+                <button class="button smallButton" type="submit" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-trash"></i></button>
+            </form>
         </span>
 
     </summary>
