@@ -1,5 +1,6 @@
 package com.MMS.MMS.model;
 
+import com.MMS.MMS.enums.ChargeFrequency;
 import com.MMS.MMS.enums.ExpenseType;
 import com.MMS.MMS.enums.PaymentStatus;
 import org.bson.types.ObjectId;
@@ -15,7 +16,7 @@ public interface Expense {
     public ObjectId getUserID();
     public String getName();
     public BigDecimal getCharge();
-    public int getChargeFrequency();
+    public ChargeFrequency getChargeFrequency();
     public int getDueDate();
     public LocalDate getStartDate();
     public ExpenseType getExpenseType();

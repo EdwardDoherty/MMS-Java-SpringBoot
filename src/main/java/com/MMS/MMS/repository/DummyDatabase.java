@@ -1,5 +1,6 @@
 package com.MMS.MMS.repository;
 
+import com.MMS.MMS.enums.ChargeFrequency;
 import com.MMS.MMS.enums.ExpenseType;
 import com.MMS.MMS.enums.PaymentStatus;
 import com.MMS.MMS.model.Expense;
@@ -24,7 +25,7 @@ public class DummyDatabase {
                         dummyID,
                         "Test Expense",
                         "20.00",
-                        1,
+                        ChargeFrequency.MONTHLY,
                         1,
                         null,
                         ExpenseType.UTILITY,
@@ -39,7 +40,7 @@ public class DummyDatabase {
                         dummyID,
                         "Test Liability",
                         "45.00",
-                        1,
+                        ChargeFrequency.MONTHLY,
                         15,
                         null,
                         ExpenseType.CREDITCARD,
@@ -56,7 +57,7 @@ public class DummyDatabase {
                         dummyID,
                         "Test Installment",
                         "150.00",
-                        1,
+                        ChargeFrequency.MONTHLY,
                         26,
                         null,
                         ExpenseType.INSTALLMENTLOAN,

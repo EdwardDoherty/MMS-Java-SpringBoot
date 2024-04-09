@@ -1,5 +1,6 @@
 package com.MMS.MMS.model;
 
+import com.MMS.MMS.enums.ChargeFrequency;
 import com.MMS.MMS.enums.ExpenseType;
 import com.MMS.MMS.enums.PaymentStatus;
 import org.bson.types.ObjectId;
@@ -26,7 +27,7 @@ public class OperatingExpense implements Expense {
         return this.charge;
     };
 
-    public int getChargeFrequency(){
+    public ChargeFrequency getChargeFrequency(){
         return this.chargeFrequency;
     };
     public int getDueDate(){
@@ -71,7 +72,7 @@ public class OperatingExpense implements Expense {
     public void setCharge(String charge){
         this.charge = new BigDecimal(charge);
     };
-    public void setChargeFrequency(int chargeFreq){
+    public void setChargeFrequency(ChargeFrequency chargeFreq){
         this.chargeFrequency = chargeFreq;
     };
     public void setDueDate(int dueDate){
@@ -100,6 +101,7 @@ public class OperatingExpense implements Expense {
     // Constructor
     public OperatingExpense(){
         this.expenseID = new ObjectId();
+        this.chargeFrequency = ChargeFrequency.MONTHLY;
     }
 
     public OperatingExpense(ObjectId userID){
@@ -121,7 +123,7 @@ public class OperatingExpense implements Expense {
             ObjectId userID,
             String name,
             String charge,
-            int chargeFrequency,
+            ChargeFrequency chargeFrequency,
             int dueDate,
             LocalDate startDate,
             ExpenseType expenseType,
@@ -148,7 +150,7 @@ public class OperatingExpense implements Expense {
             ObjectId userID,
             String name,
             String charge,
-            int chargeFrequency,
+            ChargeFrequency chargeFrequency,
             int dueDate,
             LocalDate startDate,
             ExpenseType expenseType,
@@ -179,7 +181,7 @@ public class OperatingExpense implements Expense {
             ObjectId userID,
             String name,
             String charge,
-            int chargeFrequency,
+            ChargeFrequency chargeFrequency,
             int dueDate,
             LocalDate startDate,
             ExpenseType expenseType,
@@ -215,7 +217,7 @@ public class OperatingExpense implements Expense {
     private ObjectId userID;
     private String name;
     private BigDecimal charge;
-    private int chargeFrequency;
+    private ChargeFrequency chargeFrequency;
     private int dueDate;
     private LocalDate startDate;
     private ExpenseType expenseType;
