@@ -10,14 +10,14 @@
         <span class="sumTools">
 <!--            <a class="smallButton"><i class="fa-solid fa-circle-info"></i></a>-->
 <!--            <a class="smallButton"><i class="fa-solid fa-pen"></i></a>-->
-            <form th:action="@{/deleteExpense/{id}(id = ${expenseObject.getExpenseID()})}" th:object="${expenseObject}" th:method="post">
-                <button class="button smallButton" type="submit" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-circle-info"></i></button>
+            <form th:action="@{/viewExpense/{id}(id = ${expenseObject.getExpenseID()})}" th:object="${expenseObject}" th:method="post">
+                <button class="button smallButton" title="More Information" type="submit" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-circle-info"></i></button>
+            </form>
+            <form th:action="@{/editExpense/{id}(id = ${expenseObject.getExpenseID()})}" th:object="${expenseObject}" th:method="post">
+                <button class="button smallButton" title="Edit Expense" type="submit" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-pen"></i></button>
             </form>
             <form th:action="@{/deleteExpense/{id}(id = ${expenseObject.getExpenseID()})}" th:object="${expenseObject}" th:method="post">
-                <button class="button smallButton" type="submit" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-pen"></i></button>
-            </form>
-            <form th:action="@{/deleteExpense/{id}(id = ${expenseObject.getExpenseID()})}" th:object="${expenseObject}" th:method="post">
-                <button class="button smallButton" type="submit" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-trash"></i></button>
+                <button class="button smallButton" title="Delete Expense" type="submit" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-trash"></i></button>
             </form>
         </span>
 
@@ -34,5 +34,11 @@
         <li th:text="'Grace Period: ' + ${expenseObject.getGracePeriod()}"></li>
         <li th:text="'Notes: ' + ${expenseObject.getNotes()}"></li>
     </ul>
+
+<!--    <form th:action="@{/editExpense}" th:object="${expenseObject}" th:method="post">-->
+<!--        <fieldset disabled="disabled">-->
+<!--            <input title="Expense Name" type="text" th:value="${expenseObject.getName()}">-->
+<!--        </fieldset>-->
+<!--    </form>-->
 
 </details>

@@ -40,5 +40,12 @@ public class ExpenseController {
         return "redirect:/viewExpenses";
     }
 
+    @PostMapping("/editExpense/{id}")
+    public String editExpense(@PathVariable String id) {
+        expenseRepository.deleteById(id);
+
+        return "redirect:/viewExpenses";
+    }
+
 
 }

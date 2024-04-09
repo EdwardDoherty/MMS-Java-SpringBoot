@@ -197,6 +197,7 @@ header p {
   padding: 1rem;
   display: flex;
   min-height: fit-content;
+  min-width: 20rem;
   max-width: 30rem;
   border-radius: 0.75rem;
   border: 3px outset var(--brownBlack);
@@ -256,6 +257,10 @@ header p {
 .expenseList {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  height: 70vh;
+  max-height: fit-content;
+  overflow-y: auto;
 }
 
 .editScreen {

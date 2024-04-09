@@ -3,5 +3,9 @@
 .expenseList {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  height:70vh;
+  max-height: fit-content;
+  overflow-y: auto;
 
 }

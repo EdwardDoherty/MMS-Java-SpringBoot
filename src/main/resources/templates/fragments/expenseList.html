@@ -2,7 +2,7 @@
 
 <section th:fragment="expenseList (expenseArray)" class="expenseList">
     <!--/*@thymesVar id="expenseDB" type="ArrayList<Expense>"*/-->
-    <div th:each="expense: ${expenseArray}">
+    <th:block th:each="expense: ${expenseArray}">
         <div th:replace="fragments/expenseInfo.html :: expense (expenseObject = ${expense})"></div>
-    </div>
+    </th:block>
 </section>
