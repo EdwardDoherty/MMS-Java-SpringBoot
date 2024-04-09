@@ -24,7 +24,7 @@ public class ExpenseController {
     public String addExpense(HttpSession session, @ModelAttribute("newExpense") OperatingExpense newExpense) {
         User loggedUser = (User) session.getAttribute("loggedUser");
         newExpense.setUserID(loggedUser.getUserID());
-        if(newExpense.getName() != null && !newExpense.getName().equals("")) {
+        if(newExpense.getName() != null && !newExpense.getName().isEmpty()) {
             expenseRepository.save(newExpense);
             return "redirect:/viewExpenses";
         }

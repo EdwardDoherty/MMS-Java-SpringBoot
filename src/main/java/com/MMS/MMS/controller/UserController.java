@@ -18,7 +18,7 @@ public class UserController {
 
     @PostMapping("/addUser")
     public String addUser(Model model, @ModelAttribute("newUser") User newUser) {
-        if(newUser.getUserName() != null && !newUser.getUserName().equals("")) {
+        if(newUser.getUserName() != null && !newUser.getUserName().isEmpty()) {
             userRepository.save(newUser);
             return "redirect:/login";
         }
