@@ -5,16 +5,14 @@
 <body>
 <header th:replace="~{fragments/header.html}"></header>
 
-<p th:if="${param.error != null}" class="errorMessage">
-    There was an error creating your expense. Please try again.
-</p>
-
 <section class="editScreen">
     <div th:replace="~{fragments/leftSidebar.html}"></div>
 
     <div class="workArea">
-<!--        <div th:replace="~{fragments/addExpense.html :: addExpense (newExpense = ${newExpense})}"></div>-->
 
+        <p th:if="${param.error != null}" class="errorMessage">
+            There was an error creating your expense. Please try again.
+        </p>
         <div>
             <form th:action="@{/addExpense}" th:object="${newExpense}" th:method="post">
                 <label>Enter Expense Name: </label>
@@ -22,10 +20,10 @@
                 <label>Enter Expense Notes: </label>
                 <input type="text" th:field="*{notes}">
 
-                <button type="submit" onclick="return confirm('Are you sure?')">Create Expense</button>
+                <button class="button" type="submit" onclick="return confirm('Are you sure?')">Create Expense</button>
             </form>
         </div>
-
+        <br>
         <div th:replace="~{fragments/expenseList.html :: expenseList (expenseArray = ${allExpenses})}"></div>
 
 
