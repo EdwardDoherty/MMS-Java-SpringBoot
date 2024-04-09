@@ -197,6 +197,7 @@ header p {
   padding: 1rem;
   display: flex;
   min-height: fit-content;
+  max-width: 30rem;
   border-radius: 0.75rem;
   border: 3px outset var(--brownBlack);
   margin-bottom: 0.25rem;
@@ -206,7 +207,6 @@ header p {
 }
 .expenseInfo[open] > summary:first-of-type .sumTitle i {
   rotate: 90deg;
-  font-weight: unset;
 }
 .expenseInfo[open] > summary:first-of-type .sumTools {
   opacity: 1;
@@ -243,7 +243,6 @@ header p {
 }
 .expenseInfo summary .sumTools .smallButton i {
   font-size: 1rem;
-  font-weight: unset;
   margin: 0.3rem;
 }
 .expenseInfo ul {
