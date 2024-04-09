@@ -33,5 +33,12 @@ public class ExpenseController {
 
     }
 
+    @PostMapping("/deleteExpense/{id}")
+    public String deleteExpense(@PathVariable String id) {
+        expenseRepository.deleteById(id);
+
+        return "redirect:/viewExpenses";
+    }
+
 
 }
