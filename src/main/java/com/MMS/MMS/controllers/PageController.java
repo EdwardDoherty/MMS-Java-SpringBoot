@@ -1,6 +1,5 @@
-package com.MMS.MMS.controller;
+package com.MMS.MMS.controllers;
 
-import com.MMS.MMS.model.Expense;
 import com.MMS.MMS.model.OperatingExpense;
 import com.MMS.MMS.model.User;
 import com.MMS.MMS.repository.ExpenseRepository;

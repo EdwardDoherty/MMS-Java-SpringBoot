@@ -1,15 +1,21 @@
-package com.MMS.MMS.controller;
+package com.MMS.MMS.controllers;
 
+import com.MMS.MMS.controllers.mappers.ExpenseMapper;
+import com.MMS.MMS.dto.ExpenseDTO;
 import com.MMS.MMS.model.Expense;
 import com.MMS.MMS.model.OperatingExpense;
 import com.MMS.MMS.model.User;
 import com.MMS.MMS.repository.ExpenseRepository;
-import com.MMS.MMS.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class ExpenseController {
@@ -45,6 +51,15 @@ public class ExpenseController {
         expenseRepository.deleteById(id);
 
         return "redirect:/viewExpenses";
+    }
+
+    @GetMapping
+    @ResponseBody
+    public List<ExpenseDTO> getExpensesByUserID(ObjectId userID) {
+        return expenseRepository.findAllByUserID(userID)
+                .stream()
+                .map(ExpenseMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
 
