@@ -45,9 +45,7 @@ public class OperatingExpense implements Expense {
     public BigDecimal getLateFee(){
         return this.lateFee;
     };
-    public int getGracePeriod(){
-        return this.gracePeriod;
-    };
+    public int getGracePeriod(){ return this.gracePeriod; };
     public String getNotes(){
         return this.notes;
     }
@@ -57,9 +55,7 @@ public class OperatingExpense implements Expense {
     public BigDecimal getInterestRate() {
         return null;
     }
-    public LocalDate getEndDate() {
-        return this.endDate;
-    }
+    public LocalDate getEndDate() { return this.endDate; }
 
     // Setters
     public void setUserID(ObjectId userID) {

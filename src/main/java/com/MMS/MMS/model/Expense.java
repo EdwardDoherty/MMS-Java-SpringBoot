@@ -15,15 +15,20 @@ public interface Expense {
     public ObjectId getExpenseID();
     public ObjectId getUserID();
     public String getName();
+
     public BigDecimal getCharge();
     public ChargeFrequency getChargeFrequency();
     public int getDueDate();
     public LocalDate getStartDate();
+    public BigDecimal getLateFee();
+
+
     public ExpenseType getExpenseType();
     public PaymentStatus getPaymentStatus();
-    public BigDecimal getLateFee();
-    public int getGracePeriod();
     public String getNotes();
+
+
+    public int getGracePeriod();
     public BigDecimal getTotalBalance();
     public BigDecimal getInterestRate();
     public LocalDate getEndDate();
