@@ -1,14 +1,19 @@
 package com.MMS.MMS.controllers;
 
+import com.MMS.MMS.dto.ExpenseDTO;
+import com.MMS.MMS.dto.UserDTO;
 import com.MMS.MMS.model.User;
 import com.MMS.MMS.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
 public class UserController {
 
     @Autowired
@@ -44,6 +49,12 @@ public class UserController {
     public String getUser(@PathVariable String id, HttpSession session) {
         if(userRepository.existsById(id)) {
             User userLogin = userRepository.findById(id).get();
+            ObjectId userID = userLogin.getUserID();
+
+            List<ExpenseDTO> expenseDTOList = new ArrayList<ExpenseDTO>( ExpenseController.getExpenseDTOsByUserID(userID));
+
+            UserDTO userDTO = new UserDTO(userLogin, );
+
             session.setAttribute("loggedUser", userLogin);
             return "redirect:/dashboard";
         }

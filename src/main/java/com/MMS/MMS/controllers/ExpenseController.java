@@ -1,7 +1,8 @@
 package com.MMS.MMS.controllers;
 
-import com.MMS.MMS.controllers.mappers.ExpenseMapper;
+import com.MMS.MMS.mappers.ExpenseMapper;
 import com.MMS.MMS.dto.ExpenseDTO;
+import com.MMS.MMS.dto.ExpenseListDTO;
 import com.MMS.MMS.model.Expense;
 import com.MMS.MMS.model.OperatingExpense;
 import com.MMS.MMS.model.User;
@@ -15,13 +16,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 public class ExpenseController {
 
     @Autowired
     private ExpenseRepository expenseRepository;
+
     private User user;
     private Expense expense;
     private Model model;
@@ -55,11 +56,14 @@ public class ExpenseController {
 
     @GetMapping
     @ResponseBody
-    public List<ExpenseDTO> getExpensesByUserID(ObjectId userID) {
-        return expenseRepository.findAllByUserID(userID)
-                .stream()
-                .map(ExpenseMapper::toDTO)
-                .collect(Collectors.toList());
+    public ExpenseListDTO getExpenseDTOsByUserID(ObjectId userID) {
+        List<Expense> expenses = expenseRepository.findAllByUserID(userID);
+
+        List<ExpenseDTO> expenseDTOList = new ArrayList<ExpenseDTO>();
+        // This is stupid but it works for now. I'm converting it back and forth but whatever
+        expenses.forEach((expense) -> expenseDTOList.add(ExpenseMapper.toDTO(expense)) );
+
+        return new ExpenseListDTO(expenseDTOList);
     }
 
 

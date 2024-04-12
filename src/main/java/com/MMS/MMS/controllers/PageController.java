@@ -1,5 +1,7 @@
 package com.MMS.MMS.controllers;
 
+import com.MMS.MMS.dto.ExpenseDTO;
+import com.MMS.MMS.dto.ExpenseListDTO;
 import com.MMS.MMS.model.OperatingExpense;
 import com.MMS.MMS.model.User;
 import com.MMS.MMS.repository.ExpenseRepository;
@@ -10,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+
+@RestController
 public class PageController {
 
     @Autowired
@@ -64,7 +68,8 @@ public class PageController {
 
         User loggedUser = (User) session.getAttribute("loggedUser");
         OperatingExpense newExpense = new OperatingExpense(loggedUser.getUserID());
-        model.addAttribute("allExpenses", expenseRepository.findAllByUserID(loggedUser.getUserID()));
+
+        model.addAttribute("allExpenses", loggedUser.get;
         model.addAttribute("newExpense", newExpense);
     return "viewEditExpenses";
     }
