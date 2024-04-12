@@ -1,19 +1,26 @@
-package com.MMS.MMS.controllers.mappers;
+package com.MMS.MMS.mappers;
 
 import com.MMS.MMS.dto.ExpenseCreationDTO;
 import com.MMS.MMS.dto.ExpenseDTO;
-import com.MMS.MMS.enums.ChargeFrequency;
-import com.MMS.MMS.enums.ExpenseType;
-import com.MMS.MMS.enums.PaymentStatus;
+import com.MMS.MMS.dto.ExpenseListDTO;
 import com.MMS.MMS.model.Expense;
 import com.MMS.MMS.model.OperatingExpense;
+import com.MMS.MMS.repository.ExpenseRepository;
 import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+@Component
 public class ExpenseMapper {
 
-    public ExpenseDTO toDTO(Expense expense) {
+    @Autowired
+    private ExpenseRepository expenseRepository;
+
+    public static ExpenseDTO toDTO(Expense expense) {
 
         ObjectId userID = expense.getUserID();
         String name = expense.getName();
@@ -48,9 +55,21 @@ public class ExpenseMapper {
         );
     }
 
+    public ExpenseListDTO getExpenseDTOsByUserID(ObjectId userID) {
+        List<Expense> expenses = expenseRepository.findAllByUserID(userID);
+
+        List<ExpenseDTO> expenseDTOList = new ArrayList<ExpenseDTO>();
+        // This is stupid but it works for now. I'm converting it back and forth but whatever
+        expenses.forEach((expense) -> expenseDTOList.add(ExpenseMapper.toDTO(expense)) );
+
+        return new ExpenseListDTO(expenseDTOList);
+    }
+
     public Expense toExpense(ExpenseCreationDTO expenseDTO) {
         // Do some logic to choose which flavor of expense to create?
-        return new OperatingExpense(expenseDTO.getUserID())
+        ObjectId userID = expenseDTO.getUserID();
+        String notes = expenseDTO.getNotes();
+        return new OperatingExpense();
     }
 
 }
