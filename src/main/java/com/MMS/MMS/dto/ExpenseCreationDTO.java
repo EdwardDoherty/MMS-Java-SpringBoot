@@ -75,7 +75,7 @@ public class ExpenseCreationDTO {
 
     public ExpenseCreationDTO(){
         this.expenseID = new ObjectId();
-        this.chargeFrequency = "Unset");
+        this.chargeFrequency = "Unset";
     }
 
     public ExpenseCreationDTO(ObjectId userID){

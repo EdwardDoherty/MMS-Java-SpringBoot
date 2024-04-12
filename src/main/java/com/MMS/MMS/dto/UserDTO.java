@@ -1,16 +1,20 @@
 package com.MMS.MMS.dto;
 
+import com.MMS.MMS.model.User;
+import com.MMS.MMS.repository.ExpenseRepository;
 import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class UserDTO {
+
 
     @Id
     private ObjectId userID;
     private String userName;
-    private ArrayList<ExpenseDTO> userExpenses;
+    private List<ExpenseDTO> userExpenses;
 
     public ObjectId getUserID() { return userID; }
     public void setUserID(ObjectId userID) { this.userID = userID; }
@@ -18,12 +22,12 @@ public class UserDTO {
     public String getUserName() { return userName; }
     public void setUserName(String userName) { this.userName = userName; }
 
-    public ArrayList<ExpenseDTO> getUserExpenses() { return userExpenses; }
-    public void setUserExpenses(ArrayList<ExpenseDTO> userExpenses) { this.userExpenses = userExpenses; }
+    public List<ExpenseDTO> getUserExpenses() { return this.userExpenses; }
+    public void setUserExpenses(List<ExpenseDTO> userExpenses) { this.userExpenses = userExpenses; }
 
-    public UserDTO(ObjectId userID, String userName, ArrayList<ExpenseDTO> userExpenses) {
-        this.userID = userID;
-        this.userName = userName;
+    public UserDTO(User user, List<ExpenseDTO> userExpenses) {
+        this.userID = user.getUserID();
+        this.userName = user.getUserName();
         this.userExpenses = userExpenses;
     }
 
