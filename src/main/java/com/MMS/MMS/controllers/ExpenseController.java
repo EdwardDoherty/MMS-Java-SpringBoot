@@ -1,10 +1,10 @@
 package com.MMS.MMS.controllers;
 
+import com.MMS.MMS.dto.UserDTO;
 import com.MMS.MMS.mappers.ExpenseMapper;
 import com.MMS.MMS.dto.ExpenseDTO;
 import com.MMS.MMS.dto.ExpenseListDTO;
 import com.MMS.MMS.model.Expense;
-import com.MMS.MMS.model.OperatingExpense;
 import com.MMS.MMS.model.User;
 import com.MMS.MMS.repository.ExpenseRepository;
 import jakarta.servlet.http.HttpSession;
@@ -23,16 +23,17 @@ public class ExpenseController {
     @Autowired
     private ExpenseRepository expenseRepository;
 
-    private User user;
-    private Expense expense;
+    private UserDTO user;
+    private ExpenseDTO expense;
     private Model model;
 
     @PostMapping("/addExpense")
-    public String addExpense(HttpSession session, @ModelAttribute("newExpense") OperatingExpense newExpense) {
+    public String addExpense(HttpSession session, @ModelAttribute("newExpense") ExpenseDTO newExpense) {
+        // Adjust entire method for DTOs
         User loggedUser = (User) session.getAttribute("loggedUser");
-        newExpense.setUserID(loggedUser.getUserID());
+        // newExpense.setUserID(loggedUser.getUserID());
         if(newExpense.getName() != null && !newExpense.getName().isEmpty()) {
-            expenseRepository.save(newExpense);
+            //expenseRepository.save(newExpense);
             return "redirect:/viewExpenses";
         }
 

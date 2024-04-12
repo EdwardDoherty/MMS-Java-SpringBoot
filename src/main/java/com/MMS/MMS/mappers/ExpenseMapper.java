@@ -3,8 +3,9 @@ package com.MMS.MMS.mappers;
 import com.MMS.MMS.dto.ExpenseCreationDTO;
 import com.MMS.MMS.dto.ExpenseDTO;
 import com.MMS.MMS.dto.ExpenseListDTO;
-import com.MMS.MMS.model.Expense;
-import com.MMS.MMS.model.OperatingExpense;
+import com.MMS.MMS.enums.ChargeFrequency;
+import com.MMS.MMS.enums.ExpenseType;
+import com.MMS.MMS.model.*;
 import com.MMS.MMS.repository.ExpenseRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,36 +23,26 @@ public class ExpenseMapper {
 
     public static ExpenseDTO toDTO(Expense expense) {
 
+        ObjectId expenseID = expense.getExpenseID();
         ObjectId userID = expense.getUserID();
         String name = expense.getName();
-        String charge = expense.getCharge().toString();
-        String chargeFrequency = expense.getChargeFrequency().label;
-        int dueDate = expense.getDueDate();
-        LocalDate startDate = expense.getStartDate();
-        String expenseType = expense.getExpenseType().label;
-        String paymentStatus = expense.getPaymentStatus().label;
-        String lateFee = expense.getLateFee().toString();
-        int gracePeriod = expense.getGracePeriod();
+        Cost cost = expense.getCost();
+        ExpenseType expenseType = expense.getExpenseType();
+        ChargeFrequency chargeFrequency = expense.getChargeFrequency();
         String notes = expense.getNotes();
-        String totalBalance = expense.getTotalBalance().toString();
-        String interestRate = expense.getInterestRate().toString();
-        LocalDate endDate = expense.getEndDate();
+        Delinquency delinquency = expense.getDelinquency();
+        ExpensePeriod expensePeriod = expense.getExpensePeriod();
 
         return new ExpenseDTO(
+                expenseID,
                 userID,
                 name,
-                charge,
-                chargeFrequency,
-                dueDate,
-                startDate,
+                cost,
                 expenseType,
-                paymentStatus,
-                lateFee,
-                gracePeriod,
+                chargeFrequency,
                 notes,
-                totalBalance,
-                interestRate,
-                endDate
+                delinquency,
+                expensePeriod
         );
     }
 
@@ -65,11 +56,13 @@ public class ExpenseMapper {
         return new ExpenseListDTO(expenseDTOList);
     }
 
-    public Expense toExpense(ExpenseCreationDTO expenseDTO) {
+    public FixedExpense toExpense(ExpenseCreationDTO expenseDTO) {
         // Do some logic to choose which flavor of expense to create?
+        // Need to check if it's a fixed expense or a liability expense first....
+
         ObjectId userID = expenseDTO.getUserID();
         String notes = expenseDTO.getNotes();
-        return new OperatingExpense();
+        return new FixedExpense();
     }
 
 }

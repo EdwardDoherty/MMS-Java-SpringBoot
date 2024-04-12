@@ -1,18 +1,14 @@
 package com.MMS.MMS.controllers;
 
 import com.MMS.MMS.dto.ExpenseDTO;
-import com.MMS.MMS.dto.ExpenseListDTO;
-import com.MMS.MMS.model.OperatingExpense;
+import com.MMS.MMS.model.FixedExpense;
 import com.MMS.MMS.model.User;
 import com.MMS.MMS.repository.ExpenseRepository;
 import com.MMS.MMS.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 public class PageController {
@@ -65,11 +61,12 @@ public class PageController {
     // View & Edit Expenses Page
     @GetMapping(value="/viewExpenses")
     public String viewExpenses(HttpSession session, Model model) {
+        // This needs to be rewritten for DTOs, currently broken
 
         User loggedUser = (User) session.getAttribute("loggedUser");
-        OperatingExpense newExpense = new OperatingExpense(loggedUser.getUserID());
+        FixedExpense newExpense = new FixedExpense();
 
-        model.addAttribute("allExpenses", loggedUser.get;
+        model.addAttribute("allExpenses", loggedUser);
         model.addAttribute("newExpense", newExpense);
     return "viewEditExpenses";
     }
@@ -86,8 +83,9 @@ public class PageController {
     // Create Expense page
     @GetMapping(value = "/createExpense")
     public String createExpense(Model model, HttpSession session){
+        // Needs to be rewritten for DTOs, currently broken
         User loggedUser = (User) session.getAttribute("loggedUser");
-        OperatingExpense newExpense = new OperatingExpense(loggedUser.getUserID());
+        ExpenseDTO newExpense = new ExpenseDTO();
         model.addAttribute("newExpense", newExpense);
 
         return "createExpense";
