@@ -1,16 +1,12 @@
-package com.MMS.MMS.dto;
+package com.MMS.MMS.model;
 
 import com.MMS.MMS.enums.ChargeFrequency;
 import com.MMS.MMS.enums.ExpenseType;
-import com.MMS.MMS.model.Cost;
-import com.MMS.MMS.model.Delinquency;
-import com.MMS.MMS.model.ExpensePeriod;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
-import java.time.LocalDate;
 
-public class ExpenseDTO {
+public class FixedExpense implements Expense {
 
     @Id
     private final ObjectId expenseID;
@@ -33,6 +29,7 @@ public class ExpenseDTO {
     public String getName(){
         return this.name;
     };
+    public Cost getCost(){ return this.cost; }
     public ExpenseType getExpenseType(){
         return this.expenseType;
     };
@@ -46,7 +43,7 @@ public class ExpenseDTO {
     public ExpensePeriod getExpensePeriod(){ return this.expensePeriod; };
 
 
-    public ExpenseDTO(){
+    public FixedExpense(){
         this.expenseID = new ObjectId();
         this.userID = new ObjectId();
         this.name = "New Expense";
@@ -59,7 +56,7 @@ public class ExpenseDTO {
     }
 
     // All args constructor
-    public ExpenseDTO(
+    public FixedExpense(
             ObjectId expenseID,
             ObjectId userID,
             String name,

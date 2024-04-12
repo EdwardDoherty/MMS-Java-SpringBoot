@@ -7,7 +7,8 @@ public enum ExpenseType {
     STREAMING("Streaming"),
     MISCELLANEOUS("Miscellaneous"),
     INSTALLMENT_LOAN("Installment Loan"),
-    CREDIT_CARD("Credit Card");
+    CREDIT_CARD("Credit Card"),
+    UNSET("Unset");
 
     public final String label;
 
