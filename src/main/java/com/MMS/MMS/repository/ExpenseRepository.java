@@ -10,6 +10,5 @@ public interface ExpenseRepository extends MongoRepository<Expense, String> {
 
     public List<Expense> findAllByUserID(ObjectId userID);
 
-    public long count();
 
 }
