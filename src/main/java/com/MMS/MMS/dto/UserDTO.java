@@ -12,23 +12,16 @@ public class UserDTO {
 
 
     @Id
-    private ObjectId userID;
-    private String userName;
-    private List<ExpenseDTO> userExpenses;
+    private final ObjectId userID;
+    private final String userName;
 
     public ObjectId getUserID() { return userID; }
-    public void setUserID(ObjectId userID) { this.userID = userID; }
 
     public String getUserName() { return userName; }
-    public void setUserName(String userName) { this.userName = userName; }
 
-    public List<ExpenseDTO> getUserExpenses() { return this.userExpenses; }
-    public void setUserExpenses(List<ExpenseDTO> userExpenses) { this.userExpenses = userExpenses; }
-
-    public UserDTO(User user, List<ExpenseDTO> userExpenses) {
-        this.userID = user.getUserID();
-        this.userName = user.getUserName();
-        this.userExpenses = userExpenses;
+    public UserDTO(ObjectId userID, String userName) {
+        this.userID = userID;
+        this.userName = userName;
     }
 
 }

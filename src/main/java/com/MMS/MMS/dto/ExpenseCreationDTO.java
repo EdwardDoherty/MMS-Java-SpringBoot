@@ -12,126 +12,57 @@ import java.time.LocalDate;
 public class ExpenseCreationDTO {
 
     @Id
-    private ObjectId expenseID;
-    private ObjectId userID;
-    private String name;
-    private String charge;
-    private String chargeFrequency;
-    private int dueDate;
-    private LocalDate startDate;
-    private String expenseType;
-    private String paymentStatus;
-    private String lateFee;
-    private int gracePeriod;
-    private String notes;
-    private String totalBalance;
-    private String interestRate;
-    private LocalDate endDate;
+    private final ObjectId expenseID;
+    private final ObjectId userID;
+    private final String name;
+    private final BigDecimal charge;
+    private final ChargeFrequency chargeFrequency;
+    private final ExpenseType expenseType;
+    private final PaymentStatus paymentStatus;
+    private final String notes;
+    private final BigDecimal lateFee;
+    private final int gracePeriod;
+    private final int dueDate;
+    private final LocalDate startDate;
+    private final LocalDate endDate;
+    private final BigDecimal totalBalance;
+    private final BigDecimal interestRate;
 
     public ObjectId getExpenseID() {return expenseID;}
-    public void setExpenseID(ObjectId expenseID) {this.expenseID = expenseID;}
-
     public ObjectId getUserID() {return userID;}
-    public void setUserID(ObjectId userID) {this.userID = userID;}
-
     public String getName() {return name;}
-    public void setName(String name) {this.name = name;}
-
-    public String getCharge() {return charge;}
-    public void setCharge(String charge) {this.charge = charge;}
-
-    public String getChargeFrequency() {return chargeFrequency;}
-    public void setChargeFrequency(String chargeFrequency) {this.chargeFrequency = chargeFrequency;}
-
-    public int getDueDate() {return dueDate;}
-    public void setDueDate(int dueDate) {this.dueDate = dueDate;}
-
-    public LocalDate getStartDate() {return startDate;}
-    public void setStartDate(LocalDate startDate) {this.startDate = startDate;}
-
-    public String getExpenseType() {return expenseType;}
-    public void setExpenseType(String expenseType) {this.expenseType = expenseType;}
-
-    public String getPaymentStatus() {return paymentStatus;}
-    public void setPaymentStatus(String paymentStatus) {this.paymentStatus = paymentStatus;}
-
-    public String getLateFee() {return lateFee;}
-    public void setLateFee(String lateFee) {this.lateFee = lateFee;}
-
-    public int getGracePeriod() {return gracePeriod;}
-    public void setGracePeriod(int gracePeriod) {this.gracePeriod = gracePeriod;}
-
+    public BigDecimal getCharge() {return charge;}
+    public ChargeFrequency getChargeFrequency() {return chargeFrequency;}
+    public ExpenseType getExpenseType() {return expenseType;}
+    public PaymentStatus getPaymentStatus() {return paymentStatus;}
     public String getNotes() {return notes;}
-    public void setNotes(String notes) {this.notes = notes;}
-
-    public String getTotalBalance() {return totalBalance;}
-    public void setTotalBalance(String totalBalance) {this.totalBalance = totalBalance;}
-
-    public String getInterestRate() {return interestRate;}
-    public void setInterestRate(String interestRate) {this.interestRate = interestRate;}
-
+    public BigDecimal getLateFee() {return lateFee;}
+    public int getGracePeriod() {return gracePeriod;}
+    public int getDueDate() {return dueDate;}
+    public LocalDate getStartDate() {return startDate;}
     public LocalDate getEndDate() {return endDate;}
-    public void setEndDate(LocalDate endDate) {this.endDate = endDate;}
+    public BigDecimal getTotalBalance() {return totalBalance;}
+    public BigDecimal getInterestRate() {return interestRate;}
 
-    public ExpenseCreationDTO(){
-        this.expenseID = new ObjectId();
-        this.chargeFrequency = "Unset";
-    }
-
-    public ExpenseCreationDTO(ObjectId userID){
-        this.expenseID = new ObjectId();
-        this.userID = userID;
-    }
-
-    public ExpenseCreationDTO(String name, String notes){
-        this.expenseID = new ObjectId();
-        this.name = name;
-        this.notes = notes;
-    }
 
     public ExpenseCreationDTO(
+            ObjectId expenseID,
             ObjectId userID,
             String name,
-            String charge,
-            String chargeFrequency,
-            int dueDate,
-            LocalDate startDate,
-            String expenseType,
-            String paymentStatus,
-            String lateFee,
-            int gracePeriod,
-            String notes
-    ){
-        this.expenseID = new ObjectId();
-        this.userID = userID;
-        this.name = name;
-        this.charge = charge;
-        this.chargeFrequency = chargeFrequency;
-        this.dueDate = dueDate;
-        this.startDate = startDate;
-        this.expenseType = expenseType;
-        this.paymentStatus = paymentStatus;
-        this.lateFee = lateFee;
-        this.gracePeriod = gracePeriod;
-        this.notes = notes;
-
-    }
-    public ExpenseCreationDTO(
-            ObjectId userID,
-            String name,
-            String charge,
-            String chargeFrequency,
-            int dueDate,
-            LocalDate startDate,
-            String expenseType,
-            String paymentStatus,
-            String lateFee,
-            int gracePeriod,
+            BigDecimal charge,
+            ChargeFrequency chargeFrequency,
+            ExpenseType expenseType,
+            PaymentStatus paymentStatus,
             String notes,
-            String totalBalance,
-            String interestRate
+            BigDecimal lateFee,
+            int gracePeriod,
+            int dueDate,
+            LocalDate startDate,
+            LocalDate endDate,
+            BigDecimal totalBalance,
+            BigDecimal interestRate
     ){
-        this.expenseID = new ObjectId();
+        this.expenseID = expenseID;
         this.userID = userID;
         this.name = name;
         this.charge = charge;
@@ -143,6 +74,7 @@ public class ExpenseCreationDTO {
         this.lateFee = lateFee;
         this.gracePeriod = gracePeriod;
         this.notes = notes;
+        this.endDate = endDate;
         this.totalBalance = totalBalance;
         this.interestRate = interestRate;
     }
