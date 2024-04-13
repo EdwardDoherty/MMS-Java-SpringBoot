@@ -1,7 +1,7 @@
 package com.MMS.MMS.controllers;
 
 import com.MMS.MMS.dto.UserDTO;
-import com.MMS.MMS.mappers.ExpenseMapper;
+import com.MMS.MMS.service.mappers.ExpenseMapper;
 import com.MMS.MMS.dto.ExpenseDTO;
 import com.MMS.MMS.dto.ExpenseListDTO;
 import com.MMS.MMS.model.Expense;
