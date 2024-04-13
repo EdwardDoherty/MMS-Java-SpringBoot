@@ -1,12 +1,16 @@
 package com.MMS.MMS.repository;
 
+import com.MMS.MMS.dao.UserDAO;
 import com.MMS.MMS.model.User;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface UserRepository extends MongoRepository<User, String> {
+import java.util.Optional;
 
-    public User findUserByUserName(String userName);
+public interface UserRepository extends MongoRepository<UserDAO, String> {
 
-    public long count();
+    public Optional<User> findUserByUserName(String userName);
+
+    public Optional<User> findUserByUserID(ObjectId userID);
 
 }
