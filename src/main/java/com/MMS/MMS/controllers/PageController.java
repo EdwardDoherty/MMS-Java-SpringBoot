@@ -1,16 +1,20 @@
 package com.MMS.MMS.controllers;
 
 import com.MMS.MMS.dto.ExpenseDTO;
+import com.MMS.MMS.dto.UserCreationDTO;
+import com.MMS.MMS.dto.UserDTO;
 import com.MMS.MMS.model.FixedExpense;
 import com.MMS.MMS.model.User;
 import com.MMS.MMS.repository.ExpenseRepository;
 import com.MMS.MMS.repository.UserRepository;
 import jakarta.servlet.http.HttpSession;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 public class PageController {
 
     @Autowired
@@ -22,7 +26,7 @@ public class PageController {
 //    private Model model;
 
     // Home Page
-    @GetMapping(value = "/")
+    @GetMapping("/")
     public String index(Model model){
         model.addAttribute("expenseDB", model);
 
@@ -30,7 +34,7 @@ public class PageController {
     }
 
     // Thymeleaf Template example
-    @GetMapping(value = "/thymeleafTemplate")
+    @GetMapping("/thymeleafTemplate")
     public String getTemplate(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
 
@@ -58,8 +62,25 @@ public class PageController {
         return "redirect:/login?error=true";
     }
 
+    // Get All Users page. Here you can delete users. For testing purposes only.
+    @GetMapping("/getAllUsers")
+    public String getUsers(Model model) {
+        model.addAttribute("users", userRepository.findAll());
+
+        return "getAllUsers";
+    }
+
+    // Create Account page
+    @GetMapping("/createAccount")
+    public String createAccount(Model model){
+        UserCreationDTO newUser = new UserCreationDTO( null);
+        model.addAttribute("newUser", newUser);
+
+        return "createAccount";
+    }
+
     // View & Edit Expenses Page
-    @GetMapping(value="/viewExpenses")
+    @GetMapping("/viewExpenses")
     public String viewExpenses(HttpSession session, Model model) {
         // This needs to be rewritten for DTOs, currently broken
 
@@ -71,22 +92,13 @@ public class PageController {
     return "viewEditExpenses";
     }
 
-    // Create Account page
-    @GetMapping(value = "/createAccount")
-    public String createAccount(Model model){
-        User newUser = new User();
-        model.addAttribute("newUser", newUser);
-
-        return "createAccount";
-    }
-
     // Create Expense page
-    @GetMapping(value = "/createExpense")
+    @GetMapping("/createExpense")
     public String createExpense(Model model, HttpSession session){
         // Needs to be rewritten for DTOs, currently broken
         User loggedUser = (User) session.getAttribute("loggedUser");
-        ExpenseDTO newExpense = new ExpenseDTO();
-        model.addAttribute("newExpense", newExpense);
+        //ExpenseDTO newExpense = new ExpenseDTO();
+        //model.addAttribute("newExpense", newExpense);
 
         return "createExpense";
     }

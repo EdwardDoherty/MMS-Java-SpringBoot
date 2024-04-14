@@ -12,8 +12,13 @@
 </p>
 
     <form role="form" th:action="@{/addUser}" th:object="${newUser}" th:method="post">
-        <label>Enter Username: </label>
+        <label>Enter Username:
             <input type="text" th:field="*{userName}"/>
+        </label>
+<!--        Not currently using the password, but I will eventually.-->
+<!--        <label>Enter Password:-->
+<!--            <input type="text" th:field="*{password}"/>-->
+<!--        </label>-->
 
         <button class="button" type="submit">Create User</button>
     </form>
