@@ -10,6 +10,10 @@ import java.util.ArrayList;
 @Document("Users")
 public class User {
 
+    @Id
+    private ObjectId userID;
+    private String userName;
+
     public ObjectId getUserID() {
         return this.userID;
     }
@@ -18,16 +22,12 @@ public class User {
         return this.userName;
     }
 
-    public void setUserName(String userName){
-        this.userName = userName;
-    }
-
     public User(){
         this.userID = new ObjectId();
     }
 
-    public User(String userName){
-        this.userID = new ObjectId();
+    public User(ObjectId userID, String userName){
+        this.userID = userID;
         this.userName = userName;
     }
 
@@ -38,9 +38,5 @@ public class User {
                 userID, userName
         );
     }
-
-    @Id
-    private ObjectId userID;
-    private String userName;
 
 }

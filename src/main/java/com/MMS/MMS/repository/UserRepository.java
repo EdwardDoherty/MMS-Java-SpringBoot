@@ -7,10 +7,12 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.Optional;
 
 public interface UserRepository extends MongoRepository<User, String> {
+    // Responsible for storing and retrieving some set of data
+    // If code is relating to storage or retrieval from the database, it goes in the repository.
 
-    public Optional<User> findUserByUserName(String userName);
+    public User findUserByUserName(String userName);
 
-    public Optional<User> findUserByUserID(ObjectId userID);
+    public User findUserByUserID(ObjectId userID);
 
-    public Optional<User> deleteUserByUserID(ObjectId userID);
+    public void deleteUserByUserID(ObjectId userID);
 }
