@@ -12,25 +12,27 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class UserMapper {
+public class UserDTOMapper {
 
     @Autowired
     private UserRepository userRepository;
 
-    public UserDTO toUserDTO(User user, ExpenseListDTO expenses) {
+
+//    public UserDTO toUserDTO(User user, ExpenseListDTO expenses) {
+    public UserDTO toUserDTO(User user) {
         ObjectId userID = user.getUserID();
         String userName = user.getUserName();
-        List<ExpenseDTO> userExpenses = expenses.getExpenses();
 
-        return new UserDTO(userID, userName, userExpenses);
+//        return new UserDTO(userID, userName, userExpenses);
+        return new UserDTO(userID, userName);
     }
 
-    public UserDTO convertToDTO(User user){
-        return new UserDTO();
+    public UserDTO ConvertToDTO(User user){
+        return new UserDTO(user.getUserID(), user.getUserName());
     }
 
-    public User convertToUser(UserDTO userDTO) {
-        return new User();
+    public User ConvertToUser(UserDTO userDTO) {
+        return new User(userDTO.getUserID(), userDTO.getUserName());
     }
 
 }

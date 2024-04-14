@@ -15,10 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ExpenseMapper {
+public class ExpenseDTOMapper {
 
-    @Autowired
-    private ExpenseRepository expenseRepository;
+    // Waiting for ExpenseController
+
 
     public static ExpenseDTO toDTO(Expense expense) {
 
@@ -46,11 +46,11 @@ public class ExpenseMapper {
     }
 
     public ExpenseListDTO getExpenseDTOsByUserID(ObjectId userID) {
-        List<Expense> expenses = expenseRepository.findAllByUserID(userID);
+        // List<Expense> expenses = expenseRepository.findAllByUserID(userID);
 
         List<ExpenseDTO> expenseDTOList = new ArrayList<ExpenseDTO>();
         // This is stupid but it works for now. I'm converting it back and forth but whatever
-        expenses.forEach((expense) -> expenseDTOList.add(ExpenseMapper.toDTO(expense)) );
+        //expenses.forEach((expense) -> expenseDTOList.add(ExpenseMapper.toDTO(expense)) );
 
         return new ExpenseListDTO(expenseDTOList);
     }
