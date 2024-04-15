@@ -27,6 +27,8 @@ public class UserGETController {
     // Handle userLogin
     @RequestMapping("/logInUser/{userID}")
     public String logInUser(@PathVariable ObjectId userID, HttpSession session) {
+        // This should likely be more abstracted and not sending redirects (and definitely not using URL params)
+        // TODO: Proper secure authorization. This is for development purposes only, obviously.
 
         try {
             User user = userService.getUserById(userID);

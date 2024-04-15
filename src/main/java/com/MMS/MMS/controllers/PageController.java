@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PageController {
-    
+
     private final UserGETController userGETController = new UserGETController();
 
 
@@ -82,7 +82,6 @@ public class PageController {
         // FixedExpense newExpense = new FixedExpense();
         // model.addAttribute("allExpenses", loggedUser);
         // model.addAttribute("newExpense", newExpense);
-
 
     return "viewEditExpenses";
     }
