@@ -9,21 +9,17 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class UserDTOMapper {
 
-    @Autowired
-    private UserRepository userRepository;
 
-
-//    public UserDTO toUserDTO(User user, ExpenseListDTO expenses) {
     public UserDTO toUserDTO(User user) {
         ObjectId userID = user.getUserID();
         String userName = user.getUserName();
 
-//        return new UserDTO(userID, userName, userExpenses);
         return new UserDTO(userID, userName);
     }
 
@@ -33,6 +29,19 @@ public class UserDTOMapper {
 
     public User ConvertToUser(UserDTO userDTO) {
         return new User(userDTO.getUserID(), userDTO.getUserName());
+    }
+
+    // Turn a list of Users into a list of UserDTOs
+    public List<UserDTO> UserListToDTOs(List<User> userList) {
+
+        List<UserDTO> userDTOList = new ArrayList<>();
+
+        for(User user : userList){
+            UserDTO userDTO = ConvertToDTO(user);
+            userDTOList.add(userDTO);
+        }
+
+        return userDTOList;
     }
 
 }

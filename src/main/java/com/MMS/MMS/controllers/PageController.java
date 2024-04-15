@@ -2,15 +2,28 @@ package com.MMS.MMS.controllers;
 
 import com.MMS.MMS.dto.UserCreationDTO;
 import com.MMS.MMS.dto.UserDTO;
+import com.MMS.MMS.model.User;
+import com.MMS.MMS.service.user_services.UserService;
+import com.MMS.MMS.service.mappers.UserDTOMapper;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class PageController {
 
     private final UserGETController userGETController = new UserGETController();
+    private final UserService userService;
+    private final UserDTOMapper userDTOMapper;
+
+
+    public PageController(UserService userService, UserDTOMapper userDTOMapper) {
+        this.userService = userService;
+        this.userDTOMapper = userDTOMapper;
+    }
 
 
     // Home Page
@@ -32,9 +45,17 @@ public class PageController {
     // Login page
     @GetMapping("/login")
     public String Login(@RequestParam(name="error", required=false) String error, Model model) {
-        model.addAttribute("users", userGETController.getAllUsers());
-        model.addAttribute("error", error);
-        return "login";
+        try {
+            List<User> userList = userService.getAllUsers();
+            model.addAttribute("users", userDTOMapper.UserListToDTOs(userList));
+            model.addAttribute("error", error);
+
+            return "login";
+        }
+        catch(Exception e) {
+            return "redirect:/error";
+        }
+
     }
 
     // Dashboard page
@@ -53,15 +74,21 @@ public class PageController {
     // Get All Users page. Here you can delete users. For testing purposes only.
     @GetMapping("/getAllUsers")
     public String GetAllUsers(Model model) {
-        model.addAttribute("users", userGETController.getAllUsers());
+        try {
+            List<User> userList = userService.getAllUsers();
+            model.addAttribute("users", userDTOMapper.UserListToDTOs(userList));
 
-        return "getAllUsers";
+            return "getAllUsers";
+        }
+        catch(Exception e) {
+            return "redirect:/error";
+        }
     }
 
     // Create Account page
     @GetMapping("/createAccount")
     public String CreateAccount(Model model){
-        UserCreationDTO newUser = new UserCreationDTO( null);
+        UserCreationDTO newUser = new UserCreationDTO(null);
         model.addAttribute("newUser", newUser);
 
         return "createAccount";

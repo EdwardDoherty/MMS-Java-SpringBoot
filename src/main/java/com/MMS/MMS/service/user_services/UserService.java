@@ -1,9 +1,11 @@
-package com.MMS.MMS.service.entityServices;
+package com.MMS.MMS.service.user_services;
 
 import com.MMS.MMS.model.User;
 import com.MMS.MMS.repository.UserRepository;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -36,6 +38,15 @@ public class UserService {
         }
         catch(Exception e){
             throw new BadUserDataException();
+        }
+    }
+
+    public List<User> GetAllUsers() throws DatabaseAccessException {
+        try {
+            return userRepo.findAll();
+        }
+        catch(Exception e){
+            throw new DatabaseAccessException();
         }
     }
 

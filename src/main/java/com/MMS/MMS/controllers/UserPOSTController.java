@@ -1,17 +1,11 @@
 package com.MMS.MMS.controllers;
 
 import com.MMS.MMS.dto.UserCreationDTO;
-import com.MMS.MMS.dto.UserDTO;
 import com.MMS.MMS.model.User;
 import com.MMS.MMS.repository.UserRepository;
-import com.MMS.MMS.service.entityServices.BadUserDataException;
-import com.MMS.MMS.service.entityServices.UserNotFoundException;
-import com.MMS.MMS.service.entityServices.UserService;
-import com.MMS.MMS.service.mappers.UserDTOMapper;
-import jakarta.servlet.http.HttpSession;
+import com.MMS.MMS.service.user_services.UserService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
