@@ -1,4 +1,4 @@
-package com.MMS.MMS.service.user_services;
+package com.MMS.MMS.repository;
 
 public class DatabaseAccessException extends RuntimeException {
 }

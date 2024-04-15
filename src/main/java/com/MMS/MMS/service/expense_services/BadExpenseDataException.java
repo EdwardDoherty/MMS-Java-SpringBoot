@@ -1,9 +1,8 @@
-package com.MMS.MMS.service.user_services;
-
+package com.MMS.MMS.service.expense_services;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-public class BadUserDataException extends RuntimeException {
+public class BadExpenseDataException extends RuntimeException{
 }
