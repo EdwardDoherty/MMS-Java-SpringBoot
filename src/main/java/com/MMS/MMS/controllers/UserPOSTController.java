@@ -38,7 +38,7 @@ public class UserPOSTController {
             return "redirect:/login";
         }
         catch(Exception e){
-            return "redirect:/createAccount?error=true";
+            return "redirect:/CreateAccount?error=true";
         }
     }
 
