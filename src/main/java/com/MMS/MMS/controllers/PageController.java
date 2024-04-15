@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PageController {
+    
     private final UserGETController userGETController = new UserGETController();
 
-//    public PageController(UserGETController userGETController) {
-//        this.userGETController = userGETController;
-//    }
 
     // Home Page
     @GetMapping("/")
