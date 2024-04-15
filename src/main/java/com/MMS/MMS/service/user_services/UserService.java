@@ -1,6 +1,7 @@
 package com.MMS.MMS.service.user_services;
 
 import com.MMS.MMS.model.User;
+import com.MMS.MMS.repository.DatabaseAccessException;
 import com.MMS.MMS.repository.UserRepository;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
