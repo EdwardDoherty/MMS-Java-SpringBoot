@@ -10,5 +10,8 @@ public interface ExpenseRepository extends MongoRepository<Expense, String> {
 
     public List<Expense> findAllByUserID(ObjectId userID);
 
+    public Expense findExpenseByExpenseID(ObjectId expenseID);
+
+    public void deleteExpenseByExpenseID(ObjectId expenseID);
 
 }
