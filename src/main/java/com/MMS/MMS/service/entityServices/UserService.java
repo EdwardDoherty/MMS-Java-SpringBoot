@@ -11,6 +11,7 @@ public class UserService {
 
     private final UserRepository userRepo;
 
+
     public UserService(UserRepository userRepository) {
         this.userRepo = userRepository;
     }
@@ -25,21 +26,18 @@ public class UserService {
     }
 
     public void deleteUserById(ObjectId userID) throws UserNotFoundException {
-
         User user = getUserById(userID);
         userRepo.deleteUserByUserID(user.getUserID());
-
     }
 
     public void saveUser(User user) throws BadUserDataException {
-
         try {
             userRepo.save(user);
         }
         catch(Exception e){
             throw new BadUserDataException();
         }
-
     }
+
 
 }

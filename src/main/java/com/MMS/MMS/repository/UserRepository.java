@@ -15,4 +15,5 @@ public interface UserRepository extends MongoRepository<User, String> {
     public User findUserByUserID(ObjectId userID);
 
     public void deleteUserByUserID(ObjectId userID);
+
 }

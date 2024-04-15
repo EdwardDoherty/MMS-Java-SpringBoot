@@ -53,7 +53,6 @@ public class UserPOSTController {
         catch (Exception e) {
             return "redirect:/getAllUsers?error=true";
         }
-
     }
 
 }

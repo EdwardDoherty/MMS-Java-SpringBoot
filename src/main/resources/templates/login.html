@@ -13,7 +13,7 @@
 
     <div th:each="user: ${users}">
         <h3 th:text="${user.getUserName()}"></h3>
-        <form th:action="@{/user/{id}(id = ${user.getUserID()})}" th:object="${user}" th:method="post">
+        <form th:action="@{/logInUser/{id}(id = ${user.getUserID()})}" th:object="${user}" th:method="post">
             <button class="button" type="submit">Log In</button>
         </form>
     </div>

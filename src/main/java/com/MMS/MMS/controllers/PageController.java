@@ -16,14 +16,11 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PageController {
+    private final UserGETController userGETController = new UserGETController();
 
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private ExpenseRepository expenseRepository;
-//    private User user;
-//    private Expense expense;
-//    private Model model;
+//    public PageController(UserGETController userGETController) {
+//        this.userGETController = userGETController;
+//    }
 
     // Home Page
     @GetMapping("/")
@@ -44,7 +41,7 @@ public class PageController {
     // Login page
     @GetMapping("/login")
     public String login(@RequestParam(name="error", required=false) String error, Model model) {
-        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("users", userGETController.getAllUsers());
         model.addAttribute("error", error);
         return "login";
     }
@@ -53,7 +50,7 @@ public class PageController {
     @GetMapping("/dashboard")
     public String dashboard(HttpSession session, Model model) {
 
-        User loggedUser = (User) session.getAttribute("loggedUser");
+        UserDTO loggedUser = (UserDTO) session.getAttribute("loggedUser");
         if(loggedUser != null) {
             if(loggedUser.getUserName() != null) {
                 return "dashboard";
@@ -65,7 +62,7 @@ public class PageController {
     // Get All Users page. Here you can delete users. For testing purposes only.
     @GetMapping("/getAllUsers")
     public String getUsers(Model model) {
-        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("users", userGETController.getAllUsers());
 
         return "getAllUsers";
     }
@@ -83,12 +80,12 @@ public class PageController {
     @GetMapping("/viewExpenses")
     public String viewExpenses(HttpSession session, Model model) {
         // This needs to be rewritten for DTOs, currently broken
+        // User loggedUser = (User) session.getAttribute("loggedUser");
+        // FixedExpense newExpense = new FixedExpense();
+        // model.addAttribute("allExpenses", loggedUser);
+        // model.addAttribute("newExpense", newExpense);
 
-        User loggedUser = (User) session.getAttribute("loggedUser");
-        FixedExpense newExpense = new FixedExpense();
 
-        model.addAttribute("allExpenses", loggedUser);
-        model.addAttribute("newExpense", newExpense);
     return "viewEditExpenses";
     }
 
@@ -96,9 +93,9 @@ public class PageController {
     @GetMapping("/createExpense")
     public String createExpense(Model model, HttpSession session){
         // Needs to be rewritten for DTOs, currently broken
-        User loggedUser = (User) session.getAttribute("loggedUser");
-        //ExpenseDTO newExpense = new ExpenseDTO();
-        //model.addAttribute("newExpense", newExpense);
+        // User loggedUser = (User) session.getAttribute("loggedUser");
+        // ExpenseDTO newExpense = new ExpenseDTO();
+        // model.addAttribute("newExpense", newExpense);
 
         return "createExpense";
     }
