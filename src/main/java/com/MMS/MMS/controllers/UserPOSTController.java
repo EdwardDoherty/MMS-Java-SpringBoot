@@ -27,7 +27,7 @@ public class UserPOSTController {
     public String addUser(Model model, @ModelAttribute("newUser") UserCreationDTO newUser) {
 
         try{
-            User user = new User(new ObjectId(), newUser.getUserName());
+            User user = new User(new ObjectId(), newUser.userName());
             userService.saveUser(user);
             return "redirect:/login";
         }

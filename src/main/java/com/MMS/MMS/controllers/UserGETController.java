@@ -37,19 +37,5 @@ public class UserGETController {
         }
     }
 
-//    // Find All Users
-//    public List<UserDTO> getAllUsers(){
-//        // Returns UserDTO
-//        List<User> userList = new ArrayList<User>(userService.GetAllUsers());
-//        List<UserDTO> userDTOList = new ArrayList<>();
-//
-//        for(User user : userList){
-//            UserDTO userDTO = new UserDTO(user.getUserID(),user.getUserName());
-//            userDTOList.add(userDTO);
-//        }
-//
-//        return userDTOList;
-//    }
-
 
 }

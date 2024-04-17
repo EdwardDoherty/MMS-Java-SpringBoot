@@ -2,9 +2,12 @@ package com.MMS.MMS.controllers;
 
 import com.MMS.MMS.dto.ExpenseCreationDTO;
 import com.MMS.MMS.dto.ExpenseDTO;
+import com.MMS.MMS.dto.ExpenseQuickCreateDTO;
 import com.MMS.MMS.model.Expense;
+import com.MMS.MMS.model.FixedExpense;
 import com.MMS.MMS.repository.ExpenseRepository;
 import com.MMS.MMS.service.expense_services.ExpenseService;
+import com.MMS.MMS.service.mappers.ExpenseDTOMapper;
 import jakarta.servlet.http.HttpSession;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,22 +25,23 @@ public class ExpensePOSTController {
 
     @Autowired
     private ExpenseRepository ExpenseRepository;
+
     @Autowired
     private ExpenseService expenseService = new ExpenseService(ExpenseRepository);
+    private final ExpenseDTOMapper expenseDTOMapper = new ExpenseDTOMapper();
 
 
     @RequestMapping(value = "/addExpense", method = RequestMethod.POST)
-    public String addExpense(Model model, @ModelAttribute("newExpense") ExpenseCreationDTO newExpense) {
-
-        // Directly converted from UserPOSTContoller, needs editting.
+    public String addExpense(Model model, @ModelAttribute("newExpense") ExpenseQuickCreateDTO newExpense) {
 
         try{
-            Expense expense = new Expense(new ObjectId(), newExpense.getExpenseName());
+            ExpenseCreationDTO populatedExp = expenseDTOMapper.quickCreateToFullDTO(newExpense);
+            Expense expense = expenseDTOMapper.toExpense(populatedExp);
             expenseService.saveExpense(expense);
-            return "redirect:/login";
+            return "redirect:/viewExpenses";
         }
         catch(Exception e){
-            return "redirect:/CreateAccount?error=true";
+            return "redirect:/viewExpenses?error=true";
         }
     }
 
@@ -57,41 +61,41 @@ public class ExpensePOSTController {
     }
 
     // OLD CODE PROBABLY TRASH BUT STILL MIGHT NEED TO REFERENCE  
-
-    @Autowired
-    private ExpenseRepository expenseRepository;
-
-    private UserDTO user;
-    private ExpenseDTO expense;
-    private Model model;
-
-    @PostMapping("/addExpense")
-    public String addExpense(HttpSession session, @ModelAttribute("newExpense") ExpenseDTO newExpense) {
-        // Adjust entire method for DTOs
-        User loggedUser = (User) session.getAttribute("loggedUser");
-        // newExpense.setUserID(loggedUser.getUserID());
-        if(newExpense.getName() != null && !newExpense.getName().isEmpty()) {
-            //expenseRepository.save(newExpense);
-            return "redirect:/viewExpenses";
-        }
-
-        return "redirect:/viewExpenses?error=true";
-
-    }
-
-    @PostMapping("/deleteExpense/{id}")
-    public String deleteExpense(@PathVariable String id) {
-        expenseRepository.deleteById(id);
-
-        return "redirect:/viewExpenses";
-    }
-
-    @PostMapping("/editExpense/{id}")
-    public String editExpense(@PathVariable String id) {
-        expenseRepository.deleteById(id);
-
-        return "redirect:/viewExpenses";
-    }
+//
+//    @Autowired
+//    private ExpenseRepository expenseRepository;
+//
+//    private UserDTO user;
+//    private ExpenseDTO expense;
+//    private Model model;
+//
+//    @PostMapping("/addExpense")
+//    public String addExpense(HttpSession session, @ModelAttribute("newExpense") ExpenseDTO newExpense) {
+//        // Adjust entire method for DTOs
+//        UserDTO loggedUser = (UserDTO) session.getAttribute("loggedUser");
+//        // newExpense.setUserID(loggedUser.getUserID());
+//        if(newExpense.getName() != null && !newExpense.getName().isEmpty()) {
+//            //expenseRepository.save(newExpense);
+//            return "redirect:/viewExpenses";
+//        }
+//
+//        return "redirect:/viewExpenses?error=true";
+//
+//    }
+//
+//    @PostMapping("/deleteExpense/{id}")
+//    public String deleteExpense(@PathVariable String id) {
+//        expenseRepository.deleteById(id);
+//
+//        return "redirect:/viewExpenses";
+//    }
+//
+//    @PostMapping("/editExpense/{id}")
+//    public String editExpense(@PathVariable String id) {
+//        expenseRepository.deleteById(id);
+//
+//        return "redirect:/viewExpenses";
+//    }
 
 
 
