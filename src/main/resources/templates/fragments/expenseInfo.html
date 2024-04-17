@@ -1,7 +1,6 @@
 
 
 <details th:fragment="expense (expenseObject)" class="expenseInfo">
-    <!--/*@thymesVar id="expenseObject" type="com.MMS.MMS.model.Expense"*/-->
     <summary>
         <span class="sumTitle">
             <i class="fa-solid fa-caret-right"></i>
@@ -24,7 +23,7 @@
     </summary>
     <hr>
     <ul>
-        <li th:text="'Cost: ' + ${expenseObject.getCharge()}"></li>
+        <li th:text="'Cost: ' + ${expenseObject.cost().getCharge()}"></li>
         <li th:text="'Charge Frequency: ' + ${expenseObject.getChargeFrequency()}"></li>
         <li th:text="'Due Date: ' + ${expenseObject.getDueDate()}"></li>
         <li th:text="'Start Date: ' + ${expenseObject.getStartDate()}"></li>

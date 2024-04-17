@@ -12,8 +12,8 @@
     </p>
 
     <div th:each="user: ${users}">
-        <h3 th:text="${user.getUserName()}"></h3>
-        <form th:action="@{/logInUser/{id}(id = ${user.getUserID()})}" th:object="${user}" th:method="post">
+        <h3 th:text="${user.userName()}"></h3>
+        <form th:action="@{/logInUser/{id}(id = ${user.userID()})}" th:object="${user}" th:method="post">
             <button class="button" type="submit">Log In</button>
         </form>
     </div>

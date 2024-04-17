@@ -28,7 +28,7 @@ public class ExpenseService {
         return expense;
     }
 
-    public List<Expense> getExpenseByUserId(ObjectId expenseId) throws ExpenseNotFoundException {
+    public List<Expense> getExpensesByUserId(ObjectId expenseId) throws ExpenseNotFoundException {
 
         return expenseRepo.findAllByUserID(expenseId);
     }

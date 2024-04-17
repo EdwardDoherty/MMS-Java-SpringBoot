@@ -10,7 +10,7 @@
 
         <div class="workArea">
             <h1>DASHBOARD</h1>
-            <h3 th:text="'Welcome ' + ${session.loggedUser.getUserName()} +'!'"></h3>
+            <h3 th:text="'Welcome ' + ${session.loggedUser.userName()} +'!'"></h3>
             <a th:href="createExpense">Create Expense</a>
         </div>
 

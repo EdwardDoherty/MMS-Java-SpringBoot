@@ -42,7 +42,7 @@ public class UserService {
         }
     }
 
-    public List<User> GetAllUsers() throws DatabaseAccessException {
+    public List<User> getAllUsers() throws DatabaseAccessException {
         try {
             return userRepo.findAll();
         }
