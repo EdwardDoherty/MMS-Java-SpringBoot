@@ -4,7 +4,7 @@ import com.MMS.MMS.dto.ExpenseDTO;
 import com.MMS.MMS.dto.ExpenseListDTO;
 import com.MMS.MMS.model.Expense;
 import com.MMS.MMS.repository.ExpenseRepository;
-import com.MMS.MMS.service.mappers.ExpenseDTOMapper;
+import com.MMS.MMS.service.expense_services.ExpenseDTOMapper;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

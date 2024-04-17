@@ -1,14 +1,11 @@
 package com.MMS.MMS.controllers;
 
 import com.MMS.MMS.dto.ExpenseCreationDTO;
-import com.MMS.MMS.dto.ExpenseDTO;
 import com.MMS.MMS.dto.ExpenseQuickCreateDTO;
 import com.MMS.MMS.model.Expense;
-import com.MMS.MMS.model.FixedExpense;
 import com.MMS.MMS.repository.ExpenseRepository;
 import com.MMS.MMS.service.expense_services.ExpenseService;
-import com.MMS.MMS.service.mappers.ExpenseDTOMapper;
-import jakarta.servlet.http.HttpSession;
+import com.MMS.MMS.service.expense_services.ExpenseDTOMapper;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

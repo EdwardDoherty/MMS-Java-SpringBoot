@@ -1,4 +1,4 @@
-package com.MMS.MMS.service.mappers;
+package com.MMS.MMS.service.user_services;
 
 import com.MMS.MMS.dto.UserDTO;
 import com.MMS.MMS.model.User;

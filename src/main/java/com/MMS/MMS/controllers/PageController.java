@@ -1,22 +1,19 @@
 package com.MMS.MMS.controllers;
 
 import com.MMS.MMS.dto.ExpenseDTO;
-import com.MMS.MMS.dto.ExpenseQuickCreateDTO;
 import com.MMS.MMS.dto.UserCreationDTO;
 import com.MMS.MMS.dto.UserDTO;
 import com.MMS.MMS.model.Expense;
 import com.MMS.MMS.model.User;
 import com.MMS.MMS.service.expense_services.ExpenseService;
-import com.MMS.MMS.service.mappers.ExpenseDTOMapper;
+import com.MMS.MMS.service.expense_services.ExpenseDTOMapper;
 import com.MMS.MMS.service.user_services.UserService;
-import com.MMS.MMS.service.mappers.UserDTOMapper;
+import com.MMS.MMS.service.user_services.UserDTOMapper;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -128,15 +125,15 @@ public class PageController {
         }
     }
 
-    // Create Expense page
-    @GetMapping("/createExpense")
-    public String createExpense(Model model, HttpSession session){
-        // Needs to be rewritten for DTOs, currently broken
-        // User loggedUser = (User) session.getAttribute("loggedUser");
-        // ExpenseDTO newExpense = new ExpenseDTO();
-        // model.addAttribute("newExpense", newExpense);
-
-        return "createExpense";
-    }
+//    // Create Expense page
+//    @GetMapping("/createExpense")
+//    public String createExpense(Model model, HttpSession session){
+//        // Needs to be rewritten for DTOs, currently broken
+//        // User loggedUser = (User) session.getAttribute("loggedUser");
+//        // ExpenseDTO newExpense = new ExpenseDTO();
+//        // model.addAttribute("newExpense", newExpense);
+//
+//        return "createExpense";
+//    }
 
 }

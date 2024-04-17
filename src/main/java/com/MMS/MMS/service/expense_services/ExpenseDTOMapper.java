@@ -1,8 +1,7 @@
-package com.MMS.MMS.service.mappers;
+package com.MMS.MMS.service.expense_services;
 
 import com.MMS.MMS.dto.ExpenseCreationDTO;
 import com.MMS.MMS.dto.ExpenseDTO;
-import com.MMS.MMS.dto.ExpenseListDTO;
 import com.MMS.MMS.dto.ExpenseQuickCreateDTO;
 import com.MMS.MMS.enums.ChargeFrequency;
 import com.MMS.MMS.enums.ExpenseType;
@@ -58,9 +57,18 @@ public class ExpenseDTOMapper {
         // Do some logic to choose which flavor of expense to create?
         // Need to check if it's a fixed expense or a liability expense first....
 
+        ObjectId expenseID = expenseDTO.expenseID();
         ObjectId userID = expenseDTO.userID();
+        String name = expenseDTO.name();
+        Cost cost = new Cost(expenseDTO.charge().toString());
+        ExpenseType expenseType = expenseDTO.expenseType();
+        ChargeFrequency chargeFrequency = expenseDTO.chargeFrequency();
         String notes = expenseDTO.notes();
-        return new FixedExpense();
+        Delinquency delinquency = new Delinquency(expenseDTO.lateFee(), expenseDTO.gracePeriod(), expenseDTO.paymentStatus());
+        ExpensePeriod expensePeriod = new ExpensePeriod(expenseDTO.dueDate(), expenseDTO.startDate(), expenseDTO.endDate());
+
+        return new FixedExpense(expenseID, userID, name, cost, expenseType, chargeFrequency, notes, delinquency, expensePeriod);
+
     }
 
     public ExpenseQuickCreateDTO quickCreateDTO(ObjectId userID){
