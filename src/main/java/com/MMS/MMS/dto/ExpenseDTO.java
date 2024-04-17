@@ -8,6 +8,7 @@ import com.MMS.MMS.model.ExpensePeriod;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class ExpenseDTO {
@@ -33,11 +34,14 @@ public class ExpenseDTO {
     public String getName(){
         return this.name;
     };
-    public ExpenseType getExpenseType(){
-        return this.expenseType;
+    public BigDecimal getCost(){
+        return this.cost.getCost();
+    }
+    public String getExpenseType(){
+        return this.expenseType.label;
     };
-    public ChargeFrequency getChargeFrequency(){
-        return this.chargeFrequency;
+    public String getChargeFrequency(){
+        return this.chargeFrequency.label;
     };
     public String getNotes(){
         return this.notes;
