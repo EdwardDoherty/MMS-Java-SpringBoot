@@ -63,13 +63,15 @@ public class ExpenseDTO {
             ExpensePeriod expensePeriod){
         this.expenseID = expenseID;
         this.userID = userID;
-        this.name = name;
-        this.cost = cost;
-        this.expenseType = expenseType;
-        this.chargeFrequency = chargeFrequency;
-        this.notes = notes;
-        this.delinquency = delinquency;
-        this.expensePeriod = expensePeriod;
+        this.name = name != null ? name : "No Name";
+        this.cost = cost != null ? cost : new Cost("0");
+        this.expenseType = expenseType != null ? expenseType : ExpenseType.UNSET;
+        this.chargeFrequency = chargeFrequency != null ? chargeFrequency : ChargeFrequency.UNSET;
+        this.notes = notes != null ? notes : "No Description";
+
+        // I don't like this.... Factory constructor might be better?
+        this.delinquency = delinquency != null ? delinquency : new Delinquency(null, 0, null);
+        this.expensePeriod = expensePeriod != null ? expensePeriod : new ExpensePeriod(0, null, null);
     }
 
 }

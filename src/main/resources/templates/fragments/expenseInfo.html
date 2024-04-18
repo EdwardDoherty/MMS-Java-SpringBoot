@@ -23,14 +23,14 @@
     </summary>
     <hr>
     <ul>
-        <li th:text="'Cost: ' + ${expenseObject.cost().getCharge()}"></li>
+        <li th:text="'Cost: ' + ${expenseObject.getCost()}"></li>
         <li th:text="'Charge Frequency: ' + ${expenseObject.getChargeFrequency()}"></li>
-        <li th:text="'Due Date: ' + ${expenseObject.getDueDate()}"></li>
-        <li th:text="'Start Date: ' + ${expenseObject.getStartDate()}"></li>
+        <li th:text="'Due Date: ' + ${expenseObject.getExpensePeriod().getDueDate()}"></li>
+        <li th:text="'Start Date: ' + ${expenseObject.getExpensePeriod().getStartDate()}"></li>
         <li th:text="'Type: ' + ${expenseObject.getExpenseType()}"></li>
-        <li th:text="'Status: ' + ${expenseObject.getPaymentStatus()}"></li>
-        <li th:text="'Late Fee: ' + ${expenseObject.getLateFee()}"></li>
-        <li th:text="'Grace Period: ' + ${expenseObject.getGracePeriod()}"></li>
+        <li th:text="'Status: ' + ${expenseObject.getDelinquency().getPaymentStatus()}"></li>
+        <li th:text="'Late Fee: ' + ${expenseObject.getDelinquency().getLateFee()}"></li>
+        <li th:text="'Grace Period: ' + ${expenseObject.getDelinquency().getGracePeriod()}"></li>
         <li th:text="'Notes: ' + ${expenseObject.getNotes()}"></li>
     </ul>
 

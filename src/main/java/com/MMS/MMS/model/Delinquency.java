@@ -23,16 +23,16 @@ public class Delinquency {
         return this.lateFee;
     };
 
-    public Delinquency(){
-        this.paymentStatus = PaymentStatus.UNPAID;
-        this.gracePeriod = 0;
-        this.lateFee = BigDecimal.ZERO;
-    }
+//    public Delinquency(){
+//        this.paymentStatus = PaymentStatus.UNPAID;
+//        this.gracePeriod = 0;
+//        this.lateFee = BigDecimal.ZERO;
+//    }
 
     public Delinquency(BigDecimal lateFee, int gracePeriod, PaymentStatus paymentStatus){
-        this.lateFee = lateFee;
-        this.gracePeriod = gracePeriod;
-        this.paymentStatus = paymentStatus;
+        this.lateFee = lateFee != null ? lateFee : BigDecimal.ZERO;
+        this.gracePeriod = Math.max(gracePeriod, 0);
+        this.paymentStatus = paymentStatus != null ? paymentStatus : PaymentStatus.UNPAID;
     }
 
 

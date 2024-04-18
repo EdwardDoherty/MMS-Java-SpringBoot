@@ -57,15 +57,33 @@ public class ExpenseDTOMapper {
         // Do some logic to choose which flavor of expense to create?
         // Need to check if it's a fixed expense or a liability expense first....
 
-        ObjectId expenseID = expenseDTO.expenseID();
-        ObjectId userID = expenseDTO.userID();
-        String name = expenseDTO.name();
-        Cost cost = new Cost(expenseDTO.charge().toString());
-        ExpenseType expenseType = expenseDTO.expenseType();
-        ChargeFrequency chargeFrequency = expenseDTO.chargeFrequency();
-        String notes = expenseDTO.notes();
-        Delinquency delinquency = new Delinquency(expenseDTO.lateFee(), expenseDTO.gracePeriod(), expenseDTO.paymentStatus());
-        ExpensePeriod expensePeriod = new ExpensePeriod(expenseDTO.dueDate(), expenseDTO.startDate(), expenseDTO.endDate());
+        ObjectId expenseID = expenseDTO.expenseID() != null ? expenseDTO.expenseID() : new ObjectId();
+        ObjectId userID = expenseDTO.userID() != null ? expenseDTO.userID() : null;
+
+        if(expenseDTO.userID() == null){ throw new BadExpenseDataException(); }
+
+        String name = expenseDTO.name() != null ? expenseDTO.name() : "No name set";
+
+        // This is bad, I shouldn't have to convert a BigDecimal to a string and then back to a BigDecimal
+        // TODO: fix this
+        Cost cost = expenseDTO.charge() != null ? new Cost(expenseDTO.charge().toString()) : null;
+
+        ExpenseType expenseType = expenseDTO.expenseType() != null? expenseDTO.expenseType() : ExpenseType.UNSET;
+
+        ChargeFrequency chargeFrequency = expenseDTO.chargeFrequency() != null ? expenseDTO.chargeFrequency() : ChargeFrequency.UNSET;
+
+        String notes = expenseDTO.notes() != null ? expenseDTO.notes() : "No description";
+
+        Delinquency delinquency = new Delinquency(
+                expenseDTO.lateFee() != null ? expenseDTO.lateFee() : null,
+                expenseDTO.gracePeriod(),
+                expenseDTO.paymentStatus() != null ? expenseDTO.paymentStatus() : null);
+
+        ExpensePeriod expensePeriod = new ExpensePeriod(
+                expenseDTO.dueDate(), 
+                expenseDTO.startDate() != null ? expenseDTO.startDate() : null,
+                expenseDTO.endDate()   != null ? expenseDTO.endDate()   : null
+        );
 
         return new FixedExpense(expenseID, userID, name, cost, expenseType, chargeFrequency, notes, delinquency, expensePeriod);
 

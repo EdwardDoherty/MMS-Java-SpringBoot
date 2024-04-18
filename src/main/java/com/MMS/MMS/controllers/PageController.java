@@ -33,6 +33,20 @@ public class PageController {
         this.expenseDTOMapper = expenseDTOMapper;
     }
 
+//    @GetMapping("/test")
+//    public String Test(){
+//        String head = "<!DOCTYPE html><head>" +
+//                "    <meta http-equiv='Content-Type' content=\"text/html; charset=UTF-8\" />\n" +
+//                "    <title>Test!</title>\n" +
+//                "    <link href='src/main/resources/static/css/main.css' rel='stylesheet' />\n" +
+//                "    <link rel='preconnect' href='https://fonts.googleapis.com'>\n" +
+//                "    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>\n" +
+//                "    <link href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap' rel='stylesheet'>\n" +
+//                "    <script src='https://kit.fontawesome.com/86a01f560a.js' crossorigin='anonymous'></script>\n" +
+//                "</head>";
+//
+//        return head + "<h1>test</h1><p>This is a test!</p>";
+//    }
 
     // Home Page
     @GetMapping("/")
@@ -117,6 +131,7 @@ public class PageController {
             ExpenseDTO[] expenseDTOArray = expenseDTOList.toArray(new ExpenseDTO[0]);
 
             model.addAttribute("allExpenses", expenseDTOArray);
+
             model.addAttribute("newExpense", expenseDTOMapper.quickCreateDTO(loggedUser.userID()));
 
             return "viewEditExpenses";

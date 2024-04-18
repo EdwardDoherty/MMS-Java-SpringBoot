@@ -2,12 +2,15 @@ package com.MMS.MMS.controllers;
 
 import com.MMS.MMS.dto.ExpenseCreationDTO;
 import com.MMS.MMS.dto.ExpenseQuickCreateDTO;
+import com.MMS.MMS.dto.UserDTO;
 import com.MMS.MMS.model.Expense;
+import com.MMS.MMS.model.User;
 import com.MMS.MMS.repository.ExpenseRepository;
 import com.MMS.MMS.service.expense_services.ExpenseService;
 import com.MMS.MMS.service.expense_services.ExpenseDTOMapper;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,15 +32,37 @@ public class ExpensePOSTController {
 
 
     @RequestMapping(value = "/addExpense", method = RequestMethod.POST)
-    public String addExpense(Model model, @ModelAttribute("newExpense") ExpenseQuickCreateDTO newExpense) {
+    public String addExpense(@ModelAttribute ExpenseQuickCreateDTO newExpense, HttpSession session, @SessionAttribute UserDTO loggedUser, Model model) {
 
-        try{
-            ExpenseCreationDTO populatedExp = expenseDTOMapper.quickCreateToFullDTO(newExpense);
-            Expense expense = expenseDTOMapper.toExpense(populatedExp);
-            expenseService.saveExpense(expense);
-            return "redirect:/viewExpenses";
+        if(newExpense!= null) {
+            // User loggedUser = (User) session.getAttribute("user");
+            ExpenseQuickCreateDTO createdDTO = newExpense;
+
+            if(createdDTO.userID() == null){
+                createdDTO = new ExpenseQuickCreateDTO(
+                        createdDTO.expenseID(),
+                        loggedUser.userID(),
+                        createdDTO.name(),
+                        createdDTO.charge(),
+                        createdDTO.notes()
+                );
+            }
+
+            try {
+                System.out.println(createdDTO.toString());
+                ExpenseCreationDTO populatedExp = expenseDTOMapper.quickCreateToFullDTO(createdDTO);
+                System.out.println(populatedExp.toString());
+                Expense expense = expenseDTOMapper.toExpense(populatedExp);
+                System.out.println(expense.toString());
+                expenseService.saveExpense(expense);
+
+                return "redirect:/viewExpenses";
+            } catch (Exception e) {
+                System.out.println(e);
+                return "redirect:/viewExpenses?error=true";
+            }
         }
-        catch(Exception e){
+        else {
             return "redirect:/viewExpenses?error=true";
         }
     }

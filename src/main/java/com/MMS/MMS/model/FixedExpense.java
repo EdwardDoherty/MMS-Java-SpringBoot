@@ -43,17 +43,17 @@ public class FixedExpense implements Expense {
     public ExpensePeriod getExpensePeriod(){ return this.expensePeriod; };
 
 
-    public FixedExpense(){
-        this.expenseID = new ObjectId();
-        this.userID = new ObjectId();
-        this.name = "New Expense";
-        this.cost = new Cost();
-        this.expenseType = ExpenseType.UNSET;
-        this.chargeFrequency = ChargeFrequency.MONTHLY;
-        this.notes = "No Notes Added";
-        this.delinquency = new Delinquency();
-        this.expensePeriod = new ExpensePeriod();
-    }
+//    public FixedExpense(){
+//        this.expenseID = new ObjectId();
+//        this.userID = new ObjectId();
+//        this.name = "New Expense";
+//        this.cost = new Cost();
+//        this.expenseType = ExpenseType.UNSET;
+//        this.chargeFrequency = ChargeFrequency.MONTHLY;
+//        this.notes = "No Notes Added";
+//        this.delinquency = new Delinquency();
+//        this.expensePeriod = new ExpensePeriod();
+//    }
 
     // All args constructor
     public FixedExpense(

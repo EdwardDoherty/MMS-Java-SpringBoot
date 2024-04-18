@@ -28,10 +28,5 @@ public record ExpenseCreationDTO(
         BigDecimal interestRate
         ) {
 
-    @Override
-    public ObjectId expenseID() {
-        return expenseID;
-    }
-
 
 }

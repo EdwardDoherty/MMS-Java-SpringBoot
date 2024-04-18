@@ -10,12 +10,12 @@ public class Cost {
         return this.cost;
     };
 
-    public Cost(){
-        this.cost = new BigDecimal(0);
-    }
+//    public Cost(){
+//        this.cost = new BigDecimal(0);
+//    }
 
     public Cost(String cost){
-        this.cost = new BigDecimal(cost);
+        this.cost = cost != null ? new BigDecimal(cost): new BigDecimal(0);
     }
 
 
