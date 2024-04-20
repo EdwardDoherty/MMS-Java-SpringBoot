@@ -92,12 +92,19 @@ form {
   box-sizing: border-box;
 }
 
+fieldset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+
 label {
   font-size: 1rem;
   font-weight: 700;
+  display: flex;
 }
 
-input[type=text] {
+input, select {
   font-size: 1.25rem;
   font-weight: 700;
   text-align: center;
