@@ -2,6 +2,7 @@ package com.MMS.MMS.dto;
 
 import com.MMS.MMS.enums.ChargeFrequency;
 import com.MMS.MMS.enums.ExpenseType;
+import com.MMS.MMS.enums.PaymentStatus;
 import com.MMS.MMS.model.Cost;
 import com.MMS.MMS.model.Delinquency;
 import com.MMS.MMS.model.ExpensePeriod;
@@ -34,13 +35,22 @@ public class ExpenseDTO {
     public String getName(){
         return this.name;
     };
-    public BigDecimal getCost(){
+    public Cost getCost(){
+        return this.cost;
+    }
+    public BigDecimal getCostValue(){
         return this.cost.getCost();
     }
-    public String getExpenseType(){
+    public ExpenseType getExpenseType(){
+        return this.expenseType;
+    }
+    public String getExpenseTypeLabel(){
         return this.expenseType.label;
     };
-    public String getChargeFrequency(){
+    public ChargeFrequency getChargeFrequency(){
+        return this.chargeFrequency;
+    }
+    public String getChargeFrequencyLabel(){
         return this.chargeFrequency.label;
     };
     public String getNotes(){
@@ -48,6 +58,28 @@ public class ExpenseDTO {
     };
     public Delinquency getDelinquency(){ return this.delinquency; };
     public ExpensePeriod getExpensePeriod(){ return this.expensePeriod; };
+
+    public PaymentStatus getPaymentStatus(){
+        return this.delinquency.getPaymentStatus();
+    };
+    public String getPaymentStatusLabel(){
+        return this.delinquency.getPaymentStatus().label;
+    }
+    public int getGracePeriod(){
+        return this.delinquency.getGracePeriod();
+    };
+    public BigDecimal getLateFee(){
+        return this.delinquency.getLateFee();
+    };
+    public int getDueDate(){
+        return this.expensePeriod.getDueDate();
+    };
+    public LocalDate getStartDate(){
+        return this.expensePeriod.getStartDate();
+    };
+    public LocalDate getEndDate(){
+        return this.expensePeriod.getEndDate();
+    };
 
 
     // All args constructor
@@ -74,4 +106,8 @@ public class ExpenseDTO {
         this.expensePeriod = expensePeriod != null ? expensePeriod : new ExpensePeriod(0, null, null);
     }
 
+    @Override
+    public java.lang.String toString() {
+        return super.toString();
+    }
 }

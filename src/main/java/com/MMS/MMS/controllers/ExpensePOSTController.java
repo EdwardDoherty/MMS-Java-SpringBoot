@@ -1,10 +1,10 @@
 package com.MMS.MMS.controllers;
 
 import com.MMS.MMS.dto.ExpenseCreationDTO;
+import com.MMS.MMS.dto.ExpenseDTO;
 import com.MMS.MMS.dto.ExpenseQuickCreateDTO;
 import com.MMS.MMS.dto.UserDTO;
 import com.MMS.MMS.model.Expense;
-import com.MMS.MMS.model.User;
 import com.MMS.MMS.repository.ExpenseRepository;
 import com.MMS.MMS.service.expense_services.ExpenseService;
 import com.MMS.MMS.service.expense_services.ExpenseDTOMapper;
@@ -31,7 +31,7 @@ public class ExpensePOSTController {
     private final ExpenseDTOMapper expenseDTOMapper = new ExpenseDTOMapper();
 
 
-    @RequestMapping(value = "/addExpense", method = RequestMethod.POST)
+    @RequestMapping(value = "/addQuickExpense", method = RequestMethod.POST)
     public String addExpense(@ModelAttribute ExpenseQuickCreateDTO newExpense, HttpSession session, @SessionAttribute UserDTO loggedUser, Model model) {
 
         if(newExpense!= null) {
@@ -49,11 +49,36 @@ public class ExpensePOSTController {
             }
 
             try {
-                System.out.println(createdDTO.toString());
                 ExpenseCreationDTO populatedExp = expenseDTOMapper.quickCreateToFullDTO(createdDTO);
-                System.out.println(populatedExp.toString());
-                Expense expense = expenseDTOMapper.toExpense(populatedExp);
-                System.out.println(expense.toString());
+                Expense expense = expenseDTOMapper.toNewExpense(populatedExp);
+                expenseService.saveExpense(expense);
+
+                return "redirect:/viewExpenses";
+            } catch (Exception e) {
+                System.out.println(e);
+                return "redirect:/viewExpenses?error=true";
+            }
+        }
+        else {
+            return "redirect:/viewExpenses?error=true";
+        }
+    }
+
+
+    @RequestMapping(value = "/updateExpense", method = RequestMethod.POST)
+    public String updateExpense(@ModelAttribute ExpenseDTO expenseObject, HttpSession session, @SessionAttribute UserDTO loggedUser, Model model) {
+        System.out.println(expenseObject.toString());
+        if(expenseObject != null) {
+            // User loggedUser = (User) session.getAttribute("user");
+            ExpenseDTO createdDTO = expenseObject;
+
+                System.out.println(createdDTO.getExpenseID() + " " + createdDTO.getName() + " " + createdDTO.getNotes());
+
+
+            try {
+                System.out.println(createdDTO.toString());
+                Expense expense = expenseDTOMapper.toExpense(expenseObject);
+                System.out.println(expense);
                 expenseService.saveExpense(expense);
 
                 return "redirect:/viewExpenses";
@@ -81,6 +106,8 @@ public class ExpensePOSTController {
             return "redirect:/getAllExpenses?error=true";
         }
     }
+
+
 
     // OLD CODE PROBABLY TRASH BUT STILL MIGHT NEED TO REFERENCE  
 //

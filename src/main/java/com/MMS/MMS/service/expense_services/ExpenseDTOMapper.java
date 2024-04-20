@@ -53,7 +53,7 @@ public class ExpenseDTOMapper {
         return expenseDTOList;
     }
 
-    public FixedExpense toExpense(ExpenseCreationDTO expenseDTO) {
+    public FixedExpense toNewExpense(ExpenseCreationDTO expenseDTO) {
         // Do some logic to choose which flavor of expense to create?
         // Need to check if it's a fixed expense or a liability expense first....
 
@@ -86,6 +86,27 @@ public class ExpenseDTOMapper {
         );
 
         return new FixedExpense(expenseID, userID, name, cost, expenseType, chargeFrequency, notes, delinquency, expensePeriod);
+
+    }
+
+    public FixedExpense toExpense(ExpenseDTO expenseDTO) {
+        // Do some logic to choose which flavor of expense to create?
+        // Need to check if it's a fixed expense or a liability expense first....
+
+        if(expenseDTO.getUserID() == null){ throw new BadExpenseDataException(); }
+
+
+        return new FixedExpense(
+                expenseDTO.getExpenseID(),
+                expenseDTO.getUserID(),
+                expenseDTO.getName(),
+                expenseDTO.getCost(),
+                expenseDTO.getExpenseType(),
+                expenseDTO.getChargeFrequency(),
+                expenseDTO.getNotes(),
+                expenseDTO.getDelinquency(),
+                expenseDTO.getExpensePeriod()
+        );
 
     }
 
