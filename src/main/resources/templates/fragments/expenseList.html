@@ -2,6 +2,6 @@
 
 <section th:fragment="expenseList (expenseArray)" class="expenseList">
     <div th:each="expense: ${expenseArray}">
-        <div th:replace="fragments/expenseInfo.html :: expense (expenseObject = ${expense})"></div>
+        <div th:replace="~{fragments/expenseInfo.html :: expense (expenseObject = ${expense})}"></div>
     </div>
 </section>

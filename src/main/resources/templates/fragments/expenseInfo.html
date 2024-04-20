@@ -7,8 +7,6 @@
             <span th:text="${expenseObject.getName()}"></span>
         </span>
         <span class="sumTools">
-<!--            <a class="smallButton"><i class="fa-solid fa-circle-info"></i></a>-->
-<!--            <a class="smallButton"><i class="fa-solid fa-pen"></i></a>-->
             <form th:action="@{/viewExpense/{id}(id = ${expenseObject.getExpenseID()})}" th:object="${expenseObject}" th:method="post">
                 <button class="button smallButton" title="More Information" type="submit" onclick="return confirm('Are you sure?')"><i class="fa-solid fa-circle-info"></i></button>
             </form>
@@ -22,22 +20,57 @@
 
     </summary>
     <hr>
-    <ul>
-        <li th:text="'Cost: ' + ${expenseObject.getCost()}"></li>
-        <li th:text="'Charge Frequency: ' + ${expenseObject.getChargeFrequency()}"></li>
-        <li th:text="'Due Date: ' + ${expenseObject.getExpensePeriod().getDueDate()}"></li>
-        <li th:text="'Start Date: ' + ${expenseObject.getExpensePeriod().getStartDate()}"></li>
-        <li th:text="'Type: ' + ${expenseObject.getExpenseType()}"></li>
-        <li th:text="'Status: ' + ${expenseObject.getDelinquency().getPaymentStatus()}"></li>
-        <li th:text="'Late Fee: ' + ${expenseObject.getDelinquency().getLateFee()}"></li>
-        <li th:text="'Grace Period: ' + ${expenseObject.getDelinquency().getGracePeriod()}"></li>
-        <li th:text="'Notes: ' + ${expenseObject.getNotes()}"></li>
-    </ul>
 
-<!--    <form th:action="@{/editExpense}" th:object="${expenseObject}" th:method="post">-->
-<!--        <fieldset disabled="disabled">-->
-<!--            <input title="Expense Name" type="text" th:value="${expenseObject.getName()}">-->
-<!--        </fieldset>-->
-<!--    </form>-->
+    <form th:action="@{/updateExpense}" th:object="${expenseObject}" th:method="post">
+        <fieldset>
+            <label><h4>Name: </h4></label>
+            <input title="Expense Name" type="text" th:placeholder="${expenseObject.getName()}" th:field="*{name}">
+            <label>Cost: </label>
+            <input title="Expense Cost" type="number" th:placeholder="${expenseObject.getCostValue()}" th:field="*{cost.charge}">
+            <label>Type: </label>
+            <select title="Expense Type" th:placeholder="${expenseObject.getExpenseTypeLabel()}" th:field="*{expenseType}">
+                <option value="Utility">Utility</option>
+                <option value="Insurance">Insurance</option>
+                <option value="Streaming">Streaming</option>
+                <option value="Miscellaneous">Miscellaneous</option>
+                <option value="Installment Loan">Installment Loan</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Unset">Unset</option>
+            </select>
+            <h5>When Do We Pay This Expense?</h5>
+            <label>Charge Frequency: </label>
+            <select title="Expense Charge Frequency" th:placeholder="${expenseObject.getChargeFrequencyLabel()}" th:field="*{chargeFrequency}">
+                <option value="Yearly">Yearly</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Bimonthly">Bi-Monthly (Twice per Month)</option>
+                <option value="Biweekly">Bi-Weekly (Every Two Weeks)</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Daily">Daily</option>
+                <option value="Unset">Unset / N.A.</option>
+            </select>
+            <label>Due Date: </label>
+            <input title="Expense Due Date" type="number" min="1" max="31" th:placeholder="${expenseObject.getDueDate()}" th:field="*{dueDate}">
+            <label>Start Date: </label>
+            <input title="Expense Start Date" type="date" th:placeholder="${expenseObject.getStartDate()}" th:field="*{startDate}">
+            <label>End Date: </label>
+            <input title="Expense End Date" type="date" th:placeholder="${expenseObject.getEndDate()}" th:field="*{endDate}">
+            <label>Payment Status: </label>
+            <select title="Expense Payment Status" th:placeholder="${expenseObject.getPaymentStatusLabel()}" th:field="*{paymentStatus}">
+                <option value="Yearly">Paid</option>
+                <option value="Monthly">Unpaid</option>
+                <option value="Bimonthly">Late</option>
+                <option value="Biweekly">Not Due</option>
+            </select>
+            <h4>Late Information</h4>
+            <label>Late Fee: </label>
+            <input title="Expense Late Fee" type="number" th:placeholder="${expenseObject.getLateFee()}" th:field="*{lateFee}">
+            <label>Grace Period (Days): </label>
+            <input title="Expense Grace Period" type="number" th:placeholder="${expenseObject.getGracePeriod()}" th:field="*{gracePeriod}">
+            <label>Notes: </label>
+            <input title="Expense Notes" type="text" th:placeholder="${expenseObject.getNotes()}" th:field="*{notes}">
+        </fieldset>
+
+        <button class="button" type="submit">Save Changes</button>
+    </form>
 
 </details>

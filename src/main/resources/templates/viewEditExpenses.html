@@ -14,7 +14,7 @@
             There was an error creating your expense. Please try again.
         </p>
         <div>
-            <form th:action="@{/addExpense}" th:object="${newExpense}" th:method="post">
+            <form th:action="@{/addQuickExpense}" th:object="${newExpense}" th:method="post">
                 <label>Enter Expense Name: </label>
                 <input type="text" th:field="*{name}">
                 <label>Enter Expense Notes: </label>
